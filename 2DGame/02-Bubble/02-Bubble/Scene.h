@@ -19,7 +19,7 @@ public:
 	Scene();
 	~Scene();
 
-	void init();
+	void init(const int& numLvl);
 	void update(int deltaTime);
 	void render();
 

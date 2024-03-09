@@ -7,7 +7,8 @@ void Game::init()
 {
 	bPlay = true;
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
-	scene.init();
+	numLevel = 1;
+	scene.init(numLevel);
 }
 
 bool Game::update(int deltaTime)
@@ -28,6 +29,16 @@ void Game::keyPressed(int key)
 	if(key == GLFW_KEY_ESCAPE) // Escape code
 		bPlay = false;
 	keys[key] = true;
+
+	if (key == GLFW_KEY_1) {
+		scene.init(1);
+	}
+	if (key == GLFW_KEY_2) {
+		scene.init(2);
+	}
+	if (key == GLFW_KEY_3) {
+		scene.init(3);
+	}
 }
 
 void Game::keyReleased(int key)
