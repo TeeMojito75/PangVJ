@@ -30,7 +30,10 @@ Scene::~Scene()
 void Scene::init(const int& numLevel)
 {
 	initShaders();
-	map = TileMap::createTileMap("levels/Mapa"+to_string(numLevel)+".txt", glm::vec2(SCREEN_X, SCREEN_Y), texProgram);
+	spritesheet.loadFromFile("images/BG" + to_string(numLevel) + ".png", TEXTURE_PIXEL_FORMAT_RGBA);
+	background = Sprite::createSprite(glm::vec2(380, 200), glm::vec2(1.f, 1.f), &spritesheet, &texProgram);
+	background->setPosition(glm::vec2(SCREEN_X, SCREEN_Y));
+	map = TileMap::createTileMap("levels/Mapa" + to_string(numLevel) + ".txt", glm::vec2(0.f, 0.f), texProgram);
 	player = new Player();
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
@@ -55,6 +58,7 @@ void Scene::render()
 	modelview = glm::mat4(1.0f);
 	texProgram.setUniformMatrix4f("modelview", modelview);
 	texProgram.setUniform2f("texCoordDispl", 0.f, 0.f);
+	background->render();
 	map->render();
 	player->render();
 }
