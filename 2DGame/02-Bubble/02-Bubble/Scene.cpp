@@ -5,11 +5,12 @@
 #include "Game.h"
 
 
-#define SCREEN_X 20
-#define SCREEN_Y 20
+
+#define SCREEN_X 0
+#define SCREEN_Y 0
 
 #define INIT_PLAYER_X_TILES 4
-#define INIT_PLAYER_Y_TILES 20
+#define INIT_PLAYER_Y_TILES 18
 
 
 Scene::Scene()
@@ -31,14 +32,14 @@ void Scene::init(const int& numLevel)
 {
 	initShaders();
 	spritesheet.loadFromFile("images/BG" + to_string(numLevel) + ".png", TEXTURE_PIXEL_FORMAT_RGBA);
-	background = Sprite::createSprite(glm::vec2(380, 200), glm::vec2(1.f, 1.f), &spritesheet, &texProgram);
+	background = Sprite::createSprite(glm::vec2(384, 208), glm::vec2(1.f, 1.f), &spritesheet, &texProgram);
 	background->setPosition(glm::vec2(SCREEN_X, SCREEN_Y));
 	map = TileMap::createTileMap("levels/Mapa" + to_string(numLevel) + ".txt", glm::vec2(0.f, 0.f), texProgram);
 	player = new Player();
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
 	player->setTileMap(map);
-	projection = glm::ortho(20.f, 404.f, 228.f, 20.f);
+	projection = glm::ortho(0.f, 384.f, 208.f, 0.f);
 	currentTime = 0.0f;
 }
 

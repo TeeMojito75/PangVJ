@@ -81,7 +81,7 @@ void Player::update(int deltaTime)
 		else if(sprite->animation() == MOVE_RIGHT)
 			sprite->changeAnimation(STAND_RIGHT);
 	}
-	/*
+	
 	if(bJumping)
 	{
 		jumpAngle += JUMP_ANGLE_STEP;
@@ -97,18 +97,18 @@ void Player::update(int deltaTime)
 				bJumping = !map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y);
 		}
 	}
-	else*/
+	else
 		posPlayer.y += FALL_STEP;
 		if(map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
 		{
-			/*
+			
 			if(Game::instance().getKey(GLFW_KEY_UP))
 			{
 				bJumping = true;
 				jumpAngle = 0;
 				startY = posPlayer.y;
 			}
-			*/
+			
 		}
 	
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y)));
