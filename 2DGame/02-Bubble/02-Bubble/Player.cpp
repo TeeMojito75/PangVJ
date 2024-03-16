@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Game.h"
 
-#define FALL_STEP 2
+#define FALL_STEP 3
 
 enum PlayerAnims
 {
