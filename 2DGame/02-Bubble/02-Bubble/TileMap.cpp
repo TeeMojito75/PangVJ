@@ -212,13 +212,6 @@ bool TileMap::collisionStairs(const glm::ivec2& pos, const glm::ivec2& size, int
 	{
 		if (map[y * mapSize.x + x] == 17 || map[y * mapSize.x + x] == 18 || map[y * mapSize.x + x] == 19)
 		{
-			/*
-			if (*posY - tileSize * y + size.y <= 8)
-			{
-				*posY = tileSize * y - size.y;
-				return true;
-			}
-			*/
 			return true;
 		}
 	}
