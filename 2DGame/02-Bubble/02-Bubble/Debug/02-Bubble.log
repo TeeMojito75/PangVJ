@@ -1,2 +1,23 @@
-﻿  TileMap.cpp
-  02-Bubble.vcxproj -> C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\2DGame\02-Bubble\Debug\02-Bubble.exe
+﻿  Player.cpp
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Player.cpp(99,87): error C2660: 'TileMap::collisionStairs': la función no acepta 3 argumentos
+  C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\TileMap.h(36,7):
+  vea la declaración de 'TileMap::collisionStairs'
+  C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Player.cpp(99,87):
+  al hacer coincidir la lista de argumentos '(glm::ivec2, glm::ivec2, T *)'
+          with
+          [
+              T=int
+          ]
+  
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Player.cpp(104,14): error C2660: 'TileMap::collisionStairs': la función no acepta 3 argumentos
+  C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\TileMap.h(36,7):
+  vea la declaración de 'TileMap::collisionStairs'
+  C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Player.cpp(104,14):
+  al hacer coincidir la lista de argumentos '(glm::ivec2, glm::ivec2, T *)'
+          with
+          [
+              T=int
+          ]
+  
+  TileMap.cpp
+  Generando código...
