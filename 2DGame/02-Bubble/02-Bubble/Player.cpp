@@ -8,7 +8,7 @@
 
 enum PlayerAnims
 {
-	STAND, MOVE_LEFT, MOVE_RIGHT, STAND_STAIRS, MOVE_STAIRS
+	STAND_LEFT, STAND_RIGHT, MOVE_LEFT, MOVE_RIGHT, STAND_STAIRS, MOVE_STAIRS
 };
 
 
@@ -18,8 +18,11 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 	sprite = Sprite::createSprite(glm::ivec2(28, 28), glm::vec2(0.25, 0.20), &spritesheet, &shaderProgram);
 	sprite->setNumberAnimations(6);
 
-		sprite->setAnimationSpeed(STAND, 8);
-		sprite->addKeyframe(STAND, glm::vec2(0.5f, 0.f));
+		sprite->setAnimationSpeed(STAND_LEFT, 8);
+		sprite->addKeyframe(STAND_LEFT, glm::vec2(0.5f, 0.4f));
+
+		sprite->setAnimationSpeed(STAND_RIGHT, 8);
+		sprite->addKeyframe(STAND_RIGHT, glm::vec2(0.5f, 0.f));
 
 		sprite->setAnimationSpeed(STAND_STAIRS, 8);
 		sprite->addKeyframe(STAND_STAIRS, glm::vec2(0.5f, 0.8f));
@@ -62,7 +65,7 @@ void Player::update(int deltaTime)
 		if(map->collisionMoveLeft(posPlayer, glm::ivec2(28, 28)))
 		{
 			posPlayer.x += 2;
-			sprite->changeAnimation(STAND);
+			sprite->changeAnimation(STAND_LEFT);
 		}
 	}
 	else if(Game::instance().getKey(GLFW_KEY_RIGHT))
@@ -73,15 +76,15 @@ void Player::update(int deltaTime)
 		if(map->collisionMoveRight(posPlayer, glm::ivec2(28, 28)))
 		{
 			posPlayer.x -= 2;
-			sprite->changeAnimation(STAND);
+			sprite->changeAnimation(STAND_RIGHT);
 		}
 	}
 	else
 	{
 		if(sprite->animation() == MOVE_LEFT)
-			sprite->changeAnimation(STAND);
+			sprite->changeAnimation(STAND_LEFT);
 		else if(sprite->animation() == MOVE_RIGHT)
-			sprite->changeAnimation(STAND);
+			sprite->changeAnimation(STAND_RIGHT);
 	}
 	
 	if (!map->collisionMoveDown(posPlayer, glm::ivec2(28, 28), &posPlayer.y) 
@@ -115,7 +118,7 @@ void Player::update(int deltaTime)
 		
 		else
 		{
-			if (sprite->animation() == MOVE_STAIRS || sprite->animation() == STAND)
+			if (sprite->animation() == MOVE_STAIRS || sprite->animation() == STAND_LEFT)
 				sprite->changeAnimation(STAND_STAIRS);
 		}
 	}

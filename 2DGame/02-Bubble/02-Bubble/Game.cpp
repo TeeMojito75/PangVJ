@@ -40,6 +40,17 @@ void Game::keyPressed(int key)
 	if (key == GLFW_KEY_3) {
 		scene.init(3);
 	}
+	if (key == GLFW_KEY_DOWN) { //scroll menu down
+		++posIndex;
+		posIndex = (posIndex) % 3;
+		menu.setPosIndex(posIndex);
+	}
+	if (key == GLFW_KEY_UP) { //scroll menu up
+		--posIndex;
+		if (posIndex < 0) posIndex = 2;
+		posIndex = (posIndex) % 3;
+		menu.setPosIndex(posIndex);
+	}
 }
 
 void Game::keyReleased(int key)
