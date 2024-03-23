@@ -17,6 +17,7 @@ Scene::Scene()
 {
 	map = NULL;
 	player = NULL;
+	bubble = NULL;
 	background = NULL;
 	currentTime = NULL;
 }
@@ -27,6 +28,8 @@ Scene::~Scene()
 		delete map;
 	if(player != NULL)
 		delete player;
+	if (bubble != NULL)
+		delete bubble;
 }
 
 
@@ -41,6 +44,10 @@ void Scene::init(const int& numLevel)
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
 	player->setTileMap(map);
+	bubble = new Bubble();
+	bubble->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+	bubble->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
+	bubble->setTileMap(map);
 	projection = glm::ortho(0.f, 384.f, 208.f, 0.f);
 	currentTime = 0.0f;
 }
@@ -49,6 +56,7 @@ void Scene::update(int deltaTime)
 {
 	currentTime += deltaTime;
 	player->update(deltaTime);
+	bubble->update(deltaTime);
 }
 
 void Scene::render()
@@ -64,6 +72,7 @@ void Scene::render()
 	background->render();
 	map->render();
 	player->render();
+	bubble->render();
 }
 
 void Scene::initShaders()
