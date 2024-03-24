@@ -105,7 +105,7 @@ void Player::update(int deltaTime)
 			if (sprite->animation() != MOVE_STAIRS) sprite->changeAnimation(MOVE_STAIRS);
 			if ((posPlayer.x >= 165 && posPlayer.x <= 185)) {
 				posPlayer.x = 172;
-				posPlayer.y += 2;
+				posPlayer.y += 3;
 			}
 			posPlayer.y += 2;		
 		}
