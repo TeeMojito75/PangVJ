@@ -167,7 +167,7 @@ bool TileMap::collisionMoveRight(const glm::ivec2 &pos, const glm::ivec2 &size) 
 {
 	int x, y0, y1;
 	
-	x = (pos.x + size.x - 1) / tileSize;
+	x = (pos.x + size.x - 2) / tileSize;
 	y0 = pos.y / tileSize;
 	y1 = (pos.y + size.y - 1) / tileSize;
 	for(int y=y0; y<=y1; y++)
@@ -183,13 +183,14 @@ bool TileMap::collisionMoveDown(const glm::ivec2 &pos, const glm::ivec2 &size, i
 {
 	int x0, x1, y;
 	
-	x0 = pos.x / tileSize;
+	x0 = pos.x/ tileSize;
 	x1 = (pos.x + size.x - 1) / tileSize;
-	y = (pos.y + size.y - 1) / tileSize;
+	y = (pos.y + size.y) / tileSize;
 	for(int x=x0; x<=x1; x++)
 	{
 		if (map[y * mapSize.x + x] != 0 
-			&& map[y * mapSize.x + x] != 17 && map[y * mapSize.x + x] != 18 && map[y * mapSize.x + x] != 19)
+			&& map[y * mapSize.x + x] != 17 && map[y * mapSize.x + x] != 18 && map[y * mapSize.x + x] != 19
+			&& map[y * mapSize.x + x] != 12 && map[y * mapSize.x + x] != 13 && map[y * mapSize.x + x] != 14)
 		{
 			if(*posY - tileSize * y + size.y <= 4)
 			{
@@ -206,10 +207,10 @@ bool TileMap::collisionStairs(const glm::ivec2& pos, const glm::ivec2& size, int
 {
 	int x0, x1, y0, y1;
 
-	x0 = (pos.x + size.x/2) / tileSize;
+	x0 = pos.x / tileSize;
 	x1 = (pos.x + size.x - 1) / tileSize;
-	y0 = pos.y / tileSize;
-	y1 = (pos.y + size.y - 1) / tileSize;
+	y0 = pos.y  / tileSize;
+	y1 = (pos.y + size.y) / tileSize;
 	for (int x = x0; x <= x1; x++)
 	{
 		for (int y = y0; y <= y1; y++)
@@ -221,30 +222,6 @@ bool TileMap::collisionStairs(const glm::ivec2& pos, const glm::ivec2& size, int
 
 	return false;
 }
-
-//Falta fer una funció que permeti detectar les escales de gel per poder baixar-hi
-bool TileMap::collisionSpecStairs(const glm::ivec2& pos, const glm::ivec2& size, int* posY) const
-{
-	int x0, x1, y;
-
-	x0 = pos.x / tileSize;
-	x1 = (pos.x + size.x - 1) / tileSize;
-	y = (pos.y + size.y - 1) / tileSize;
-	for (int x = x0; x <= x1; x++)
-	{
-		if (map[y * mapSize.x + x] == 12 || map[y * mapSize.x + x] == 13 || map[y * mapSize.x + x] == 14)
-		{
-			if (*posY - tileSize * y + size.y <= 4)
-			{
-				*posY = tileSize * y - size.y;
-				return true;
-			}
-		}
-	}
-
-	return false;
-}
-
 
 
 

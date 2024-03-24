@@ -15,7 +15,7 @@ enum PlayerAnims
 void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 {
 	spritesheet.loadFromFile("images/Pj1completo.png", TEXTURE_PIXEL_FORMAT_RGBA);
-	sprite = Sprite::createSprite(glm::ivec2(28, 28), glm::vec2(0.25, 0.20), &spritesheet, &shaderProgram);
+	sprite = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(0.25, 0.20), &spritesheet, &shaderProgram);
 	sprite->setNumberAnimations(6);
 
 		sprite->setAnimationSpeed(STAND_LEFT, 8);
@@ -26,8 +26,6 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 
 		sprite->setAnimationSpeed(STAND_STAIRS, 8);
 		sprite->addKeyframe(STAND_STAIRS, glm::vec2(0.5f, 0.8f));
-
-		//No fa l'animació sencera i no sé perquè
 		sprite->setAnimationSpeed(MOVE_STAIRS, 12);
 		sprite->addKeyframe(MOVE_STAIRS, glm::vec2(0.75f, 0.f));
 		sprite->addKeyframe(MOVE_STAIRS, glm::vec2(0.75f, 0.2f));
@@ -56,72 +54,75 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 
 void Player::update(int deltaTime)
 {
+
 	sprite->update(deltaTime);
+
+	if (!map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y)
+		&& !map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
+	{
+		posPlayer.y += FALL_STEP;
+	}
+
+	if (map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y));
+
+	
+	
 	if(Game::instance().getKey(GLFW_KEY_LEFT))
 	{
 		if(sprite->animation() != MOVE_LEFT)
 			sprite->changeAnimation(MOVE_LEFT);
 		posPlayer.x -= 2;
-		if(map->collisionMoveLeft(posPlayer, glm::ivec2(28, 28)))
+		if(map->collisionMoveLeft(posPlayer, glm::ivec2(32, 32)))
 		{
 			posPlayer.x += 2;
 			sprite->changeAnimation(STAND_LEFT);
 		}
 	}
+	
 	else if(Game::instance().getKey(GLFW_KEY_RIGHT))
 	{
 		if(sprite->animation() != MOVE_RIGHT)
 			sprite->changeAnimation(MOVE_RIGHT);
 		posPlayer.x += 2;
-		if(map->collisionMoveRight(posPlayer, glm::ivec2(28, 28)))
+		if(map->collisionMoveRight(posPlayer, glm::ivec2(32, 32)))
 		{
 			posPlayer.x -= 2;
 			sprite->changeAnimation(STAND_RIGHT);
 		}
 	}
+
+	else if (Game::instance().getKey(GLFW_KEY_UP))
+	{
+		if (map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y)) {
+			if (sprite->animation() != MOVE_STAIRS) sprite->changeAnimation(MOVE_STAIRS);
+			posPlayer.y -= 2;
+		}
+	}
+
+	else if (Game::instance().getKey(GLFW_KEY_DOWN))
+	{
+		if (map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y)) {
+			if (sprite->animation() != MOVE_STAIRS) sprite->changeAnimation(MOVE_STAIRS);
+			if ((posPlayer.x >= 165 && posPlayer.x <= 185)) {
+				posPlayer.x = 172;
+				posPlayer.y += 2;
+			}
+			posPlayer.y += 2;		
+		}
+	}
+	
 	else
 	{
 		if(sprite->animation() == MOVE_LEFT)
 			sprite->changeAnimation(STAND_LEFT);
 		else if(sprite->animation() == MOVE_RIGHT)
 			sprite->changeAnimation(STAND_RIGHT);
+		else if (sprite->animation() == MOVE_STAIRS && map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
+			sprite->changeAnimation(STAND_STAIRS);
+		else if (sprite->animation() == MOVE_STAIRS && !map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
+			sprite->changeAnimation(STAND_RIGHT);
 	}
 	
-	if (!map->collisionMoveDown(posPlayer, glm::ivec2(28, 28), &posPlayer.y) 
-		&& !map->collisionStairs(posPlayer, glm::ivec2(28, 28), &posPlayer.y)
-		&& !map->collisionSpecStairs(posPlayer, glm::ivec2(28, 28), &posPlayer.y))
-	{
-		posPlayer.y += FALL_STEP;
-	}
-
-	if(map->collisionMoveDown(posPlayer, glm::ivec2(28, 28), &posPlayer.y))
-	{
-			
-	}
-	
-	//Falta aconseguir funcionalitat amb escales de gel
-	if (map->collisionStairs(posPlayer, glm::ivec2(28, 28), &posPlayer.y) || map->collisionSpecStairs(posPlayer, glm::ivec2(28, 28), &posPlayer.y))
-	{
-		//if (sprite->animation() != STAND_STAIRS) sprite->changeAnimation(STAND_STAIRS);
-
-		if (Game::instance().getKey(GLFW_KEY_UP))
-		{
-			if (sprite->animation() != MOVE_STAIRS) sprite->changeAnimation(MOVE_STAIRS);
-			posPlayer.y -= 2;
-		}
-
-		else if (Game::instance().getKey(GLFW_KEY_DOWN))
-		{
-			if (sprite->animation() != MOVE_STAIRS) sprite->changeAnimation(MOVE_STAIRS);
-			posPlayer.y += 2;
-		}
-		
-		else
-		{
-			if (sprite->animation() == MOVE_STAIRS || sprite->animation() == STAND_LEFT)
-				sprite->changeAnimation(STAND_STAIRS);
-		}
-	}
 
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y)));
 }
