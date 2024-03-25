@@ -203,7 +203,7 @@ bool TileMap::collisionMoveDown(const glm::ivec2 &pos, const glm::ivec2 &size, i
 	return false;
 }
 
-bool TileMap::collisionStairs(const glm::ivec2& pos, const glm::ivec2& size, int* posY) const
+bool TileMap::collisionStairs(const glm::ivec2& pos, const glm::ivec2& size) const
 {
 	int x0, x1, y0, y1;
 
@@ -225,6 +225,25 @@ bool TileMap::collisionStairs(const glm::ivec2& pos, const glm::ivec2& size, int
 	return false;
 }
 
+bool TileMap::collisionRoof(const glm::ivec2& pos, const glm::ivec2& size) const
+{
+	int x0, x1, y;
+
+	x0 = pos.x / tileSize;
+	x1 = (pos.x + size.x - 1) / tileSize;
+	y = (pos.y - 2) / tileSize;
+	for (int x = x0; x <= x1; x++)
+	{
+		if (map[y * mapSize.x + x] != 0
+			&& map[y * mapSize.x + x] != 17 && map[y * mapSize.x + x] != 18 && map[y * mapSize.x + x] != 19
+			&& map[y * mapSize.x + x] != 12 && map[y * mapSize.x + x] != 13 && map[y * mapSize.x + x] != 14)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 
 

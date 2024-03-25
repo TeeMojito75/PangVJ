@@ -60,7 +60,7 @@ void Player::update(int deltaTime)
 	sprite->update(deltaTime);
 
 	if (!map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y)
-		&& !map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
+		&& !map->collisionStairs(posPlayer, glm::ivec2(32, 32)))
 	{
 		posPlayer.y += FALL_STEP;
 	}
@@ -98,14 +98,14 @@ void Player::update(int deltaTime)
 
 	else if (Game::instance().getKey(GLFW_KEY_UP))
 	{
-		if (map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y)) {
+		if (map->collisionStairs(posPlayer, glm::ivec2(32, 32))) {
 			if (sprite->animation() != MOVE_STAIRS) sprite->changeAnimation(MOVE_STAIRS);
 			posPlayer.y -= 2;
 		}
 	}
 
 	
-	else if (Game::instance().getKey(GLFW_KEY_DOWN) && map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
+	else if (Game::instance().getKey(GLFW_KEY_DOWN) && map->collisionStairs(posPlayer, glm::ivec2(32, 32)))
 	{
 		if (sprite->animation() != MOVE_STAIRS) sprite->changeAnimation(MOVE_STAIRS);
 		if ((posPlayer.x >= 160 && posPlayer.x <= 185) && escales) {
@@ -124,10 +124,10 @@ void Player::update(int deltaTime)
 		else if(sprite->animation() == MOVE_RIGHT)
 			sprite->changeAnimation(STAND_RIGHT);
 		
-		else if (sprite->animation() == MOVE_STAIRS && map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
+		else if (sprite->animation() == MOVE_STAIRS && map->collisionStairs(posPlayer, glm::ivec2(32, 32)))
 			sprite->changeAnimation(STAND_STAIRS);
 		
-		else if (sprite->animation() == MOVE_STAIRS && !map->collisionStairs(posPlayer, glm::ivec2(32, 32), &posPlayer.y))
+		else if (sprite->animation() == MOVE_STAIRS && !map->collisionStairs(posPlayer, glm::ivec2(32, 32)))
 			sprite->changeAnimation(STAND_RIGHT);
 		
 		else if (sprite->animation() == STAND_STAIRS && map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y))

@@ -5,8 +5,13 @@
 #include "Game.h"
 
 #define JUMP_ANGLE_STEP 4
+<<<<<<< Updated upstream
 #define JUMP_HEIGHT 80
 #define FALL_STEP 4
+=======
+#define JUMP_HEIGHT 96
+#define FALL_STEP 3
+>>>>>>> Stashed changes
 
 
 void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
@@ -31,8 +36,6 @@ void Bubble::update(int deltaTime)
 			posBubble.x += 2;
 			dir = !dir;
 		}
-
-	
 	
 		if (dir == true)
 		posBubble.x += 2;
@@ -44,17 +47,22 @@ void Bubble::update(int deltaTime)
 
 		if (bJumping)
 		{
+
 			jumpAngle += JUMP_ANGLE_STEP;
 			if (jumpAngle == 180)
 			{
 				bJumping = false;
 				posBubble.y = startY;
 			}
+			else if (map->collisionRoof(posBubble, glm::ivec2(32, 32))) 
+			{
+				posBubble.y = int(startY - 96 * sin(3.14159f * 0 / 180.f));
+			}
 			else
 			{
 				posBubble.y = int(startY - 96 * sin(3.14159f * jumpAngle / 180.f));
-				if (jumpAngle > 90)
-					bJumping = !map->collisionMoveDown(posBubble, glm::ivec2(32, 32), &posBubble.y);
+				if (jumpAngle > 90);
+					bJumping = !map->collisionMoveDown(posBubble, glm::ivec2(32, 32), &posBubble.y);	
 			}
 		}
 		else
