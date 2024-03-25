@@ -5,7 +5,7 @@
 #include "Game.h"
 
 #define JUMP_ANGLE_STEP 4
-#define JUMP_HEIGHT 96
+#define JUMP_HEIGHT 80
 #define FALL_STEP 4
 
 

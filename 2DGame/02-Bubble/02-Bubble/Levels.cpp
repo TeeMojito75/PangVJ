@@ -19,10 +19,10 @@ Levels::Levels()
 	glm::vec2 texCoords[2] = { glm::vec2(0.f, 0.f), glm::vec2(1.f, 1.f) };
 	background = TexturedQuad::createTexturedQuad(geom, texCoords, texProgram);
 
-	spritesheet[0].loadFromFile("images/Levels.png", TEXTURE_PIXEL_FORMAT_RGBA);
-	spritesheet[1].loadFromFile("images/Pajaro.png", TEXTURE_PIXEL_FORMAT_RGBA);
+	spritesheet[0].loadFromFile("images/Mapa.png", TEXTURE_PIXEL_FORMAT_RGBA);
+	spritesheet[1].loadFromFile("images/Marker.png", TEXTURE_PIXEL_FORMAT_RGBA);
 
-	point = Sprite::createSprite(glm::vec2(20, 20), glm::vec2(1.f, 1.f), &spritesheet[1], &texProgram);
+	point = Sprite::createSprite(glm::vec2(35, 35), glm::vec2(1.f, 1.f), &spritesheet[1], &texProgram);
 
 
 	projection = glm::ortho(0.f, 384.f, 208.f, 0.f);
@@ -38,13 +38,14 @@ Levels::~Levels()
 void Levels::init()
 {
 	glm::mat4 modelview;
+	pos = 0;
 
 	texProgram.use();
 	texProgram.setUniformMatrix4f("projection", projection);
 	texProgram.setUniform4f("color", 1.0f, 1.0f, 1.0f, 1.0f);
 
 	texProgram.setUniformMatrix4f("modelview", modelview);
-	point->setPosition(glm::vec2(float(65), float(118)));
+	point->setPosition(glm::vec2(float(119), float(52)));
 }
 
 void Levels::update(int deltaTime)
@@ -53,10 +54,11 @@ void Levels::update(int deltaTime)
 	point->update(deltaTime);
 }
 
-void Levels::setPosIndex(int pos) {
-	if (pos == 0) point->setPosition(glm::vec2(float(65), float(118)));
-	else if (pos == 1) point->setPosition(glm::vec2(float(75), float(147)));
-	else if (pos == 2) point->setPosition(glm::vec2(float(114), float(177)));
+void Levels::setPosIndex(int posI) {
+	pos = posI;
+	if (pos == 0) point->setPosition(glm::vec2(float(119), float(52)));
+	else if (pos == 1) point->setPosition(glm::vec2(float(83), float(117)));
+	else if (pos == 2) point->setPosition(glm::vec2(float(292), float(58)));
 }
 
 void Levels::render()
@@ -71,6 +73,11 @@ void Levels::render()
 	texProgram.setUniform2f("texCoordDispl", 0.f, 0.f);
 	background->render(spritesheet[0]);
 	point->render();
+}
+
+int Levels::getPos() 
+{
+	return pos;
 }
 
 void Levels::initShaders()

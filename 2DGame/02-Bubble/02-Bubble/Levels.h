@@ -16,11 +16,13 @@ public:
 	void update(int deltaTime);
 	void render();
 	void setPosIndex(int pos);
+	int getPos();
 
 private:
 	void initShaders();
 
 private:
+	int pos;
 	ShaderProgram texProgram;
 	float currentTime;
 	glm::mat4 projection;

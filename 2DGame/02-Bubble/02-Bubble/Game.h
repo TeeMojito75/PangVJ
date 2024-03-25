@@ -43,11 +43,12 @@ public:
 	bool getKey(int key) const;
 
 private:
-	Menu menu;
+	Menu* menu;
 	Controls* controls;
 	Levels* levels;
-	Scene scene;
-	int numLevel, posIndex, View;
+	Scene* scene;
+	int numLevel, posIndex, view;
+	bool start, map;
 	bool bPlay; // Continue to play game?
 	bool keys[GLFW_KEY_LAST+1]; // Store key states so that 
 							    // we can have access at any time

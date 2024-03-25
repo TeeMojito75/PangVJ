@@ -15,7 +15,6 @@ public:
 	void init();
 	void update(int deltaTime);
 	void render();
-	void setPosIndex(int pos);
 
 private:
 	void initShaders();
@@ -24,10 +23,9 @@ private:
 	ShaderProgram texProgram;
 	float currentTime;
 	glm::mat4 projection;
-	Texture spritesheet[2];
+	Texture spritesheet;
 protected:
 	TexturedQuad* background;
-	Sprite* point;
 };
 
 #endif // _CONTROLS_INCLUDE

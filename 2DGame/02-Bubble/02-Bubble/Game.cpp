@@ -5,16 +5,33 @@
 
 void Game::init()
 {
-	bPlay = true;
+	bPlay = true, start = false, map = true;
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
-	numLevel = 1;
-	scene.init(numLevel);
+	numLevel = 1, view = 0, posIndex = 0;
+
+	menu = new Menu();
+	menu->init();
+
+	scene = new Scene();
+	scene->init(numLevel);
+
+	controls = new Controls();
+	controls->init();
+
+	levels = new Levels();
+	levels->init();
 }
 
 bool Game::update(int deltaTime)
 {
-	scene.update(deltaTime);
-
+	if (start) {
+		if (map) levels->update(deltaTime);
+		else scene->update(deltaTime);
+	}
+	else {
+		if (view == 1) controls->update(deltaTime);
+		else menu->update(deltaTime);
+	}
 	return bPlay;
 
 }
@@ -22,34 +39,64 @@ bool Game::update(int deltaTime)
 void Game::render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	scene.render();
+	if (start) {
+		if (map) levels->render();
+		else scene->render();
+	}
+	else {
+		if (view == 1) controls->render();
+		else menu->render();
+	}
 }
 
 void Game::keyPressed(int key)
 {
-	if(key == GLFW_KEY_ESCAPE) // Escape code
-		bPlay = false;
+	if (key == GLFW_KEY_ESCAPE) { // Escape code
+		if (view == 0) {
+			bPlay = false;
+		}
+		else {
+			view = 0;
+			start = false;
+			map = true;
+		}
+	}
 	keys[key] = true;
-
-	if (key == GLFW_KEY_1) {
-		scene.init(1);
-	}
-	if (key == GLFW_KEY_2) {
-		scene.init(2);
-	}
-	if (key == GLFW_KEY_3) {
-		scene.init(3);
-	}
 	if (key == GLFW_KEY_DOWN) { //scroll menu down
 		++posIndex;
 		posIndex = (posIndex) % 3;
-		menu.setPosIndex(posIndex);
+		menu->setPosIndex(posIndex);
 	}
 	if (key == GLFW_KEY_UP) { //scroll menu up
 		--posIndex;
 		if (posIndex < 0) posIndex = 2;
 		posIndex = (posIndex) % 3;
-		menu.setPosIndex(posIndex);
+		menu->setPosIndex(posIndex);
+	}
+	if (key == GLFW_KEY_ENTER && view == 0) { 
+		if (posIndex == 0) {
+			start = true;
+			map = true;
+			view = -1;
+		}
+		if (posIndex == 1) {
+			view = posIndex;
+		}
+		if (posIndex == 2) {
+			bPlay = false;
+		}
+	}
+	if (key == GLFW_KEY_SPACE && start && map) {
+		numLevel = levels->getPos() + 1;
+		map = false;
+		scene = new Scene();
+		scene->init(numLevel);
+	}
+	if (key == GLFW_KEY_RIGHT && start && map) {
+		if (levels->getPos() < 2) levels->setPosIndex((levels->getPos()) + 1);
+	}
+	if (key == GLFW_KEY_LEFT && start && map) {
+		if (levels->getPos() > 0) levels->setPosIndex((levels->getPos()) - 1);
 	}
 }
 
