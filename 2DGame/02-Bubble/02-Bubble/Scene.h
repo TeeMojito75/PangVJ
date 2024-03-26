@@ -35,7 +35,10 @@ private:
 	float currentTime;
 	glm::mat4 projection;
 	Texture spritesheet;
-	Text text;
+	Text text[3];
+	int puntuació;
+	int vides;
+	float temps; 
 protected:
 	Sprite* background;
 };

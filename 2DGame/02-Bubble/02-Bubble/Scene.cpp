@@ -20,6 +20,10 @@ Scene::Scene()
 	bubble = NULL;
 	background = NULL;
 	currentTime = NULL;
+
+	puntuació = 0;
+	vides = 3;
+	temps = 180.f;
 }
 
 Scene::~Scene()
@@ -51,13 +55,15 @@ void Scene::init(const int& numLevel)
 	bubble->setPosition(glm::vec2(20 * map->getTileSize(), 0 * map->getTileSize()));
 	bubble->setTileMap(map);
 
-	// Select which font you want to use
-	if (!text.init("fonts/OpenSans-Regular.ttf"))
+	for (int i = 0; i < 3; i++) {
+		// Select which font you want to use
+		//if (!text[i].init("fonts/OpenSans-Regular.ttf"))
 		//if(!text.init("fonts/OpenSans-Bold.ttf"))
-		//if(!text.init("fonts/DroidSerif.ttf"))
-		cout << "Could not load font!!!" << endl;
+		if(!text[i].init("fonts/DroidSerif.ttf"))
+			cout << "Could not load font!!!" << endl;
+	}
 
-	projection = glm::ortho(0.f, 384.f, 208.f, 0.f);
+	projection = glm::ortho(0.f, 384.f, 248.f, 0.f);
 	currentTime = 0.0f;
 }
 
@@ -66,6 +72,8 @@ void Scene::update(int deltaTime)
 	currentTime += deltaTime;
 	player->update(deltaTime);
 	bubble->update(deltaTime);
+	temps -= 0.012f;
+	
 }
 
 void Scene::render()
@@ -82,7 +90,9 @@ void Scene::render()
 	map->render();
 	player->render();
 	bubble->render();
-	text.render("Videogames!!!", glm::vec2(200, 200), 32, glm::vec4(0, 0, 0, 1));
+	text[0].render("Puntuacio: " + to_string(puntuació), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
+	text[1].render("Vides: " + to_string(vides), glm::vec2(130, 840), 48, glm::vec4(1, 1, 1, 1));
+	text[2].render("Temps: " + to_string(temps), glm::vec2(1085, 780), 48, glm::vec4(1, 1, 1, 1));
 
 }
 
