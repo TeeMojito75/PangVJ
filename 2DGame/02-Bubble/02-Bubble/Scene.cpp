@@ -23,8 +23,10 @@ Scene::Scene()
 	puntuació = 0;
 	vides = 3;
 	temps = 180.f;
+	hit = false;
 	restart = false;
 	over = false;
+	auxLvl = 1;
 }
 
 Scene::~Scene()
@@ -102,7 +104,7 @@ void Scene::update(int deltaTime)
 	currentTime += deltaTime;
 	player->update(deltaTime);
 	bubble->update(deltaTime);
-	temps -= 0.012f;
+	if (!restart) temps -= 0.012f;
 
 	posPaux = player->getPosP();
 	posBaux = bubble->getPosB();
