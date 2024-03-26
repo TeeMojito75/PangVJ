@@ -12,8 +12,8 @@ void Game::init()
 	menu = new Menu();
 	menu->init();
 
-	scene = new Scene();
-	scene->init(numLevel);
+	//scene = new Scene();
+	//scene->init(numLevel, 3);
 
 	controls = new Controls();
 	controls->init();
@@ -90,7 +90,7 @@ void Game::keyPressed(int key)
 		numLevel = levels->getPos() + 1;
 		map = false;
 		scene = new Scene();
-		scene->init(numLevel);
+		scene->init(numLevel, 3);
 	}
 	if (key == GLFW_KEY_RIGHT && start && map) {
 		if (levels->getPos() < 2) levels->setPosIndex((levels->getPos()) + 1);
