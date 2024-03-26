@@ -15,12 +15,14 @@
     <ClInclude Include="Bubble.h" />
     <ClInclude Include="Controls.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Hook.h" />
     <ClInclude Include="Levels.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
@@ -31,6 +33,7 @@
     <ClCompile Include="Bubble.cpp" />
     <ClCompile Include="Controls.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Hook.cpp" />
     <ClCompile Include="Levels.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -38,6 +41,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -75,9 +79,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\lib\Win32-visualStudio;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\lib\Win32-visualStudio;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -92,7 +100,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\libs\freetype-2.3.5-1-bin\lib;..\..\..\libs\Simple OpenGL Image Library\projects\VC9\Debug;..\..\..\libs\glew-1.13.0\lib\Release\Win32;..\..\..\libs\glfw-3.3.8\lib-vc2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>freetype.lib;SOIL.lib;glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>irrKlang.lib;freetype.lib;SOIL.lib;glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -112,7 +120,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\..\..\libs\freetype-2.3.5-1-bin\lib;..\..\..\libs\Simple OpenGL Image Library\projects\VC9\Debug;..\..\..\libs\glfw-3.3.8\lib-vc2015;..\..\..\libs\glew-1.13.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>freetype.lib;SOIL.lib;glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>irrKlang.lib;freetype.lib;SOIL.lib;glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

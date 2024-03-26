@@ -17,6 +17,7 @@ Scene::Scene()
 {
 	map = NULL;
 	player = NULL;
+	hook = NULL;
 	bubble = NULL;
 	background = NULL;
 	currentTime = NULL;
@@ -32,6 +33,8 @@ Scene::~Scene()
 		delete map;
 	if(player != NULL)
 		delete player;
+	if (hook != NULL)
+		delete hook;
 	if (bubble != NULL)
 		delete bubble;
 }
@@ -49,6 +52,11 @@ void Scene::init(const int& numLevel)
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
 	player->setTileMap(map);
+
+	hook = new Hook();
+	hook->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+	hook->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
+	hook->setTileMap(map);
 	
 	bubble = new Bubble();
 	bubble->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
@@ -71,6 +79,7 @@ void Scene::update(int deltaTime)
 {
 	currentTime += deltaTime;
 	player->update(deltaTime);
+	hook->update(deltaTime);
 	bubble->update(deltaTime);
 	temps -= 0.012f;
 	
@@ -89,6 +98,7 @@ void Scene::render()
 	background->render();
 	map->render();
 	player->render();
+	hook->render();
 	bubble->render();
 	text[0].render("Puntuacio: " + to_string(puntuació), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
 	text[1].render("Vides: " + to_string(vides), glm::vec2(130, 840), 48, glm::vec4(1, 1, 1, 1));
