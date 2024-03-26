@@ -22,7 +22,7 @@ Scene::Scene()
 
 	puntuació = 0;
 	vides = 3;
-	temps = 180.f;
+	temps = 181.f;
 	hit = false;
 	restart = false;
 	over = false;
@@ -49,7 +49,7 @@ void Scene::init(const int& numLevel, int videsRest)
 
 		if (Game::instance().getKey(GLFW_KEY_C))
 		{
-			temps = 180.f;
+			temps = 181.f;
 			restart = false;
 		}
 	}
@@ -127,7 +127,18 @@ void Scene::update(int deltaTime)
 		Scene::init(auxLvl, vides);
 	}
 
-	if (restart || temps == 0)
+	if (temps <= 0.f)
+	{
+		if (vides >= 0)
+		{
+			restart = true;
+			temps = 181.f;
+			vides -= 1;
+			Scene::init(auxLvl, vides);
+		}
+	}
+
+	if (restart)
 	{
 		Scene::init(auxLvl, vides);
 	}
@@ -163,7 +174,7 @@ void Scene::render()
 	bubble->render();
 	text[0].render("Puntuacio: " + to_string(puntuació), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
 	if (vides >= 0) text[1].render("Vides: " + to_string(vides), glm::vec2(130, 840), 48, glm::vec4(1, 1, 1, 1));
-	text[2].render("Temps: " + to_string(temps), glm::vec2(1085, 780), 48, glm::vec4(1, 1, 1, 1));
+	if (temps > 0.f) text[2].render("Temps: " + to_string(int(temps)), glm::vec2(1050, 780), 48, glm::vec4(1, 1, 1, 1));
 	
 	if (restart) 
 		gameO[0].render("PRESS C TO TRY AGAIN!!!", glm::vec2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
