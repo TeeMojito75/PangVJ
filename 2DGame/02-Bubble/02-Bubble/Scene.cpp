@@ -31,7 +31,10 @@ Scene::Scene()
 	write = false;
 	auxLvl = 1;
 
+	SoundManager::instance().init();
 	engine = SoundManager::instance().getSoundEngine();
+	irrklang::ISound* sound = engine->play2D("sounds/MtFuji.wav", true, false, true);
+	sound->setVolume(0.3f);
 }
 
 Scene::~Scene()
@@ -49,6 +52,7 @@ Scene::~Scene()
 
 void Scene::init(const int& numLevel, int videsRest)
 {
+
 	if (restart)
 	{
 		if (write) 
@@ -244,12 +248,12 @@ void Scene::render()
 	}
 
 	if (restart)
-		gameO[0].render("PRESS C TO TRY AGAIN!!!", glm::vec2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
+		gameO[0].render("Press C To Try Again!!!", glm::vec2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
 
 	if (over)
 	{
 		gameO[0].render("GAME OVER!!!", glm::vec2(SCREEN_WIDTH / 2 + 130, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
-		gameO[1].render("PRESS Esc TO EXIT", glm::vec2(SCREEN_WIDTH / 2 + 80, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
+		gameO[1].render("Press Esc To Exit", glm::vec2(SCREEN_WIDTH / 2 + 90, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
 	}
 
 }

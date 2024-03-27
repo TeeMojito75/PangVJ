@@ -22,8 +22,8 @@ void Game::init()
 	levels = new Levels();
 	levels->init();
 
-	irrklang::ISound* sound = engine->play2D("sounds/02 Stage 01-03 (Mt. Fuji).wav", true, false, true);
-	sound->setVolume(0.5f);
+	irrklang::ISound* sound = engine->play2D("sounds/MenuTheme.mp3", true, false, true);
+	sound->setVolume(0.7f);
 	
 }
 
@@ -68,17 +68,23 @@ void Game::keyPressed(int key)
 	}
 	keys[key] = true;
 	if (key == GLFW_KEY_DOWN) { //scroll menu down
+		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.mp3", false, false, true);
+		sound->setVolume(0.5f);
 		++posIndex;
 		posIndex = (posIndex) % 3;
 		menu->setPosIndex(posIndex);
 	}
 	if (key == GLFW_KEY_UP) { //scroll menu up
+		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.mp3", false, false, true);
+		sound->setVolume(0.5f);
 		--posIndex;
 		if (posIndex < 0) posIndex = 2;
 		posIndex = (posIndex) % 3;
 		menu->setPosIndex(posIndex);
 	}
 	if (key == GLFW_KEY_ENTER && view == 0) { 
+		irrklang::ISound* sound = engine->play2D("sounds/AccioMenu.mp3", false, false, true);
+		sound->setVolume(0.8f);
 		if (posIndex == 0) {
 			start = true;
 			map = true;
@@ -92,15 +98,22 @@ void Game::keyPressed(int key)
 		}
 	}
 	if (key == GLFW_KEY_SPACE && start && map) {
+		irrklang::ISound* sound = engine->play2D("sounds/NextLvl.mp3", false, false, true);
+		sound->setVolume(0.5f);
+		engine->drop();
 		numLevel = levels->getPos() + 1;
 		map = false;
 		scene = new Scene();
 		scene->init(numLevel, 3);
 	}
 	if (key == GLFW_KEY_RIGHT && start && map) {
+		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.mp3", false, false, true);
+		sound->setVolume(0.5f);
 		if (levels->getPos() < 2) levels->setPosIndex((levels->getPos()) + 1);
 	}
 	if (key == GLFW_KEY_LEFT && start && map) {
+		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.mp3", false, false, true);
+		sound->setVolume(0.5f);
 		if (levels->getPos() > 0) levels->setPosIndex((levels->getPos()) - 1);
 	}
 }
