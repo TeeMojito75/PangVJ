@@ -88,3 +88,8 @@ void Bubble::setPosition(const glm::vec2& pos)
 	posBubble = pos;
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posBubble.x), float(tileMapDispl.y + posBubble.y)));
 }
+
+glm::ivec2 Bubble::getPosB()
+{
+	return posBubble;
+}

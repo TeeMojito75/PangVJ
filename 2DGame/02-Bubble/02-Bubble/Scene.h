@@ -23,7 +23,7 @@ public:
 	Scene();
 	~Scene();
 
-	void init(const int& numLvl);
+	void init(const int& numLvl, int videsRest);
 	void update(int deltaTime);
 	void render();
 
@@ -40,10 +40,22 @@ private:
 	float currentTime;
 	glm::mat4 projection;
 	Texture spritesheet;
+
+	int auxLvl;
+	
 	Text text[3];
+	Text gameO[2];
+
 	int puntuació;
 	int vides;
 	float temps; 
+
+	bool hit;
+	bool restart;
+	bool over;
+
+	glm::ivec2 posPaux;
+	glm::ivec2 posBaux;
 protected:
 	Sprite* background;
 };

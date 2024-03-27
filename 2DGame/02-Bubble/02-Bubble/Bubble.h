@@ -17,6 +17,8 @@ public:
 	void setTileMap(TileMap* tileMap);
 	void setPosition(const glm::vec2& pos);
 
+	glm::ivec2 getPosB();
+
 private:
 	glm::ivec2 tileMapDispl, posBubble;
 	Texture spritesheet;
