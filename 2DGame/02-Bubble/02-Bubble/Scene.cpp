@@ -24,7 +24,7 @@ Scene::Scene()
 
 	puntuacio = 0;
 	vides = 3;
-	temps = 181.f;
+	temps = 91.f;
 	hit = false;
 	restart = false;
 	over = false;
@@ -60,7 +60,7 @@ void Scene::init(const int& numLevel, int videsRest)
 
 		if (Game::instance().getKey(GLFW_KEY_C))
 		{
-			temps = 181.f;
+			temps = 91.f;
 			restart = false;
 		}
 	}
@@ -174,7 +174,7 @@ void Scene::update(int deltaTime)
 		{
 			write = true;
 			restart = true;
-			temps = 181.f;
+			temps = 91.f;
 			vides -= 1;
 			Scene::init(auxLvl, vides);
 		}
