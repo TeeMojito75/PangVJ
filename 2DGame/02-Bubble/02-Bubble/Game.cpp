@@ -4,8 +4,12 @@
 
 
 void Game::init()
+
 {
-	bPlay = true, start = false, map = true;
+	SoundManager::instance().init();
+	engine = SoundManager::instance().getSoundEngine();
+
+	bPlay = true, start = false, map = true, songPlaying = false;
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	numLevel = 1, view = 0, posIndex = 0;
 
@@ -20,6 +24,9 @@ void Game::init()
 
 	levels = new Levels();
 	levels->init();
+
+	irrklang::ISound* sound = engine->play2D("sounds/02 Stage 01-03 (Mt. Fuji).wav", true, false, true);
+	sound->setVolume(0.5f);
 }
 
 bool Game::update(int deltaTime)
