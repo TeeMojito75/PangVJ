@@ -112,6 +112,26 @@ void Game::keyPressed(int key)
 		sound->setVolume(0.5f);
 		if (levels->getPos() > 0) levels->setPosIndex((levels->getPos()) - 1);
 	}
+
+	//Solo utilitzar las teclas de cambio de mundo dentro de un nivel sino caput
+	if (Game::instance().getKey(GLFW_KEY_1))
+	{ 
+		scene->~Scene();
+		scene = new Scene();
+		scene->init(1, 3);
+	}
+	if (Game::instance().getKey(GLFW_KEY_2))
+	{
+		scene->~Scene();
+		scene = new Scene();
+		scene->init(2, 3);
+	}
+	if (Game::instance().getKey(GLFW_KEY_3))
+	{
+		scene->~Scene();
+		scene = new Scene();
+		scene->init(3, 3);
+	}
 }
 
 void Game::keyReleased(int key)

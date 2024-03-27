@@ -203,22 +203,6 @@ void Scene::update(int deltaTime)
 		write = true;
 		Scene::init(auxLvl, vides);
 	}
-
-	//Es imposible hacer que cambie la música al cambiar de nivel, haga lo que haga salta interrupción xd
-	if (Game::instance().getKey(GLFW_KEY_1))
-	{
-		Scene::init(1, 3);
-	}
-	if (Game::instance().getKey(GLFW_KEY_2))
-	{
-		Scene::init(2, 3);
-	}
-	if (Game::instance().getKey(GLFW_KEY_3))
-	{
-		Scene::init(3, 3);
-	}
-
-	
 }
 
 void Scene::render()
