@@ -4,10 +4,11 @@
 
 
 void Game::init()
-
 {
 	SoundManager::instance().init();
 	engine = SoundManager::instance().getSoundEngine();
+	irrklang::ISound* sound = engine->play2D("sounds/MenuTheme.wav", true, false, true);
+	sound->setVolume(0.7f);
 
 	bPlay = true, start = false, map = true, songPlaying = false;
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -20,11 +21,7 @@ void Game::init()
 	controls->init();
 
 	levels = new Levels();
-	levels->init();
-
-	irrklang::ISound* sound = engine->play2D("sounds/MenuTheme.mp3", true, false, true);
-	sound->setVolume(0.7f);
-	
+	levels->init();	
 }
 
 bool Game::update(int deltaTime)
@@ -61,21 +58,20 @@ void Game::keyPressed(int key)
 			bPlay = false;
 		}
 		else {
-			view = 0;
-			start = false;
-			map = true;
+			engine->drop();
+			Game::init();
 		}
 	}
 	keys[key] = true;
-	if (key == GLFW_KEY_DOWN) { //scroll menu down
-		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.mp3", false, false, true);
+	if (key == GLFW_KEY_DOWN && view == 0) { //scroll menu down
+		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.wav", false, false, true);
 		sound->setVolume(0.5f);
 		++posIndex;
 		posIndex = (posIndex) % 3;
 		menu->setPosIndex(posIndex);
 	}
-	if (key == GLFW_KEY_UP) { //scroll menu up
-		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.mp3", false, false, true);
+	if (key == GLFW_KEY_UP && view == 0) { //scroll menu up
+		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.wav", false, false, true);
 		sound->setVolume(0.5f);
 		--posIndex;
 		if (posIndex < 0) posIndex = 2;
@@ -83,7 +79,7 @@ void Game::keyPressed(int key)
 		menu->setPosIndex(posIndex);
 	}
 	if (key == GLFW_KEY_ENTER && view == 0) { 
-		irrklang::ISound* sound = engine->play2D("sounds/AccioMenu.mp3", false, false, true);
+		irrklang::ISound* sound = engine->play2D("sounds/AccioMenu.wav", false, false, true);
 		sound->setVolume(0.8f);
 		if (posIndex == 0) {
 			start = true;
@@ -98,7 +94,7 @@ void Game::keyPressed(int key)
 		}
 	}
 	if (key == GLFW_KEY_SPACE && start && map) {
-		irrklang::ISound* sound = engine->play2D("sounds/NextLvl.mp3", false, false, true);
+		irrklang::ISound* sound = engine->play2D("sounds/NextLvl.wav", false, false, true);
 		sound->setVolume(0.5f);
 		engine->drop();
 		numLevel = levels->getPos() + 1;
@@ -107,12 +103,12 @@ void Game::keyPressed(int key)
 		scene->init(numLevel, 3);
 	}
 	if (key == GLFW_KEY_RIGHT && start && map) {
-		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.mp3", false, false, true);
+		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.wav", false, false, true);
 		sound->setVolume(0.5f);
 		if (levels->getPos() < 2) levels->setPosIndex((levels->getPos()) + 1);
 	}
 	if (key == GLFW_KEY_LEFT && start && map) {
-		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.mp3", false, false, true);
+		irrklang::ISound* sound = engine->play2D("sounds/MenuMove.wav", false, false, true);
 		sound->setVolume(0.5f);
 		if (levels->getPos() > 0) levels->setPosIndex((levels->getPos()) - 1);
 	}

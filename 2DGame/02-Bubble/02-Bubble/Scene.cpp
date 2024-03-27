@@ -29,12 +29,11 @@ Scene::Scene()
 	restart = false;
 	over = false;
 	write = false;
+	music = true;
 	auxLvl = 1;
 
 	SoundManager::instance().init();
 	engine = SoundManager::instance().getSoundEngine();
-	irrklang::ISound* sound = engine->play2D("sounds/MtFuji.wav", true, false, true);
-	sound->setVolume(0.3f);
 }
 
 Scene::~Scene()
@@ -47,6 +46,11 @@ Scene::~Scene()
 		delete hook;
 	if (bubble != NULL)
 		delete bubble;
+	if (background != NULL)
+		delete background;
+	if (engine != NULL)
+		engine->drop();
+
 }
 
 
@@ -78,11 +82,6 @@ void Scene::init(const int& numLevel, int videsRest)
 			write = false;
 		}
 		
-		if (Game::instance().getKey(GLFW_KEY_ESCAPE))
-		{
-			Game::instance().init();
-		}
-		
 	}
 	
 	initShaders();
@@ -110,10 +109,7 @@ void Scene::init(const int& numLevel, int videsRest)
 	bubble->setTileMap(map);
 
 	for (int i = 0; i < 3; i++) {
-		// Select which font you want to use
-		//if (!text[i].init("fonts/OpenSans-Regular.ttf"))
-		//if(!text.init("fonts/OpenSans-Bold.ttf"))
-		if (!text[i].init("fonts/DroidSerif.ttf"))
+		if (!text[i].init("fonts/DroidSerif.ttf")) 
 			cout << "Could not load font!!!" << endl;
 	}
 
@@ -121,6 +117,25 @@ void Scene::init(const int& numLevel, int videsRest)
 	{
 		if (!gameO[0].init("fonts/DroidSerif.ttf") || !gameO[1].init("fonts/DroidSerif.ttf"))
 			cout << "Could not load font!!!" << endl;
+	}
+
+	if (numLevel == 1 && music)
+	{
+		irrklang::ISound* sound = engine->play2D("sounds/Stage1.wav", true, false, true);
+		sound->setVolume(0.3f);
+		music = false;
+	}
+	else if (numLevel == 2 && music)
+	{
+		irrklang::ISound* sound = engine->play2D("sounds/Stage2.wav", true, false, true);
+		sound->setVolume(0.3f);
+		music = false;
+	}
+	else if (numLevel == 3 && music)
+	{
+		irrklang::ISound* sound = engine->play2D("sounds/Stage3.wav", true, false, true);
+		sound->setVolume(0.3f);
+		music = false;
 	}
 
 	projection = glm::ortho(0.f, 384.f, 248.f, 0.f);
@@ -146,7 +161,6 @@ void Scene::update(int deltaTime)
 		{
 			if (vides > 0)
 			{
-
 				irrklang::ISound* sound = engine->play2D("sounds/LapaSengancha.wav", false, false, true);
 				sound->setVolume(0.5f);
 				restart = true;
@@ -190,6 +204,7 @@ void Scene::update(int deltaTime)
 		Scene::init(auxLvl, vides);
 	}
 
+	//Es imposible hacer que cambie la música al cambiar de nivel, haga lo que haga salta interrupción xd
 	if (Game::instance().getKey(GLFW_KEY_1))
 	{
 		Scene::init(1, 3);
@@ -243,7 +258,7 @@ void Scene::render()
 		if (auxLvl == 3)
 		{
 			gameO[0].render("Stage 3", glm::vec2(570, 780), 48, glm::vec4(1, 1, 1, 1));
-			gameO[1].render("Muai Island", glm::vec2(520, 840), 48, glm::vec4(1, 1, 1, 1));
+			gameO[1].render("Easter Island", glm::vec2(510, 840), 48, glm::vec4(1, 1, 1, 1));
 		}
 	}
 

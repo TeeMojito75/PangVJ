@@ -54,6 +54,7 @@ private:
 	bool restart;
 	bool over;
 	bool write;
+	bool music;
 
 	glm::ivec2 posPaux;
 	glm::ivec2 posBaux;
