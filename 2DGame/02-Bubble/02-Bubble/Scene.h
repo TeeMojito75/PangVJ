@@ -46,7 +46,7 @@ private:
 	Text text[3];
 	Text gameO[2];
 
-	int puntuació;
+	int puntuacio;
 	int vides;
 	float temps; 
 

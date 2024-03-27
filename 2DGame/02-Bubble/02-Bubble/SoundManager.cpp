@@ -1,4 +1,6 @@
 #include "SoundManager.h"
+#include <iostream>
+#include <cmath>
 
 SoundManager::SoundManager() {
 	engine = NULL;

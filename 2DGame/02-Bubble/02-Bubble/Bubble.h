@@ -30,4 +30,4 @@ private:
 };
 
 
-#endif // _BUBBLE_INCLUDE
+#endif  _BUBBLE_INCLUDE

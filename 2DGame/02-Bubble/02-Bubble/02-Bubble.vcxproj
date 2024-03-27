@@ -79,13 +79,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\lib\Win32-visualStudio;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\..\libs\irrKlang-1.6.0\include;C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\libs\irrKlang-1.6.0\lib\Win32-visualStudio;C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\lib\Win32-visualStudio;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\lib\Win32-visualStudio;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\..\libs\irrKlang-1.6.0\include;C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\libs\irrKlang-1.6.0\lib\Win32-visualStudio;C:\Users\ebhta\source\repos\PangVJ\libs\irrKlang-1.6.0\lib\Win32-visualStudio;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

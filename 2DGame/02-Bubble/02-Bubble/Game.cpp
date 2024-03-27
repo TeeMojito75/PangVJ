@@ -16,9 +16,6 @@ void Game::init()
 	menu = new Menu();
 	menu->init();
 
-	//scene = new Scene();
-	//scene->init(numLevel, 3);
-
 	controls = new Controls();
 	controls->init();
 

@@ -32,6 +32,6 @@ private:
 };
 
 
-#endif // _PLAYER_INCLUDE
+#endif _PLAYER_INCLUDE
 
 
