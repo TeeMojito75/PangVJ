@@ -28,7 +28,10 @@ Scene::Scene()
 	hit = false;
 	restart = false;
 	over = false;
+	write = false;
 	auxLvl = 1;
+
+	engine = SoundManager::instance().getSoundEngine();
 }
 
 Scene::~Scene()
@@ -48,8 +51,12 @@ void Scene::init(const int& numLevel, int videsRest)
 {
 	if (restart)
 	{
-		if (!gameO[0].init("fonts/DroidSerif.ttf"))
-			cout << "Could not load font!!!" << endl;
+		if (write) 
+		{
+			gameO[0].init("fonts/DroidSerif.ttf");
+			write = false;
+		}
+			
 
 		if (Game::instance().getKey(GLFW_KEY_C))
 		{
@@ -60,23 +67,28 @@ void Scene::init(const int& numLevel, int videsRest)
 
 	else if (over)
 	{
-		if (!gameO[0].init("fonts/DroidSerif.ttf") || !gameO[1].init("fonts/DroidSerif.ttf"))
-			cout << "Could not load font!!!" << endl;
-
+		if (write) 
+		{
+			gameO[0].init("fonts/DroidSerif.ttf");
+			gameO[1].init("fonts/DroidSerif.ttf");
+			write = false;
+		}
+		
 		if (Game::instance().getKey(GLFW_KEY_ESCAPE))
 		{
 			Game::instance().init();
 		}
-
+		
 	}
-
+	
 	initShaders();
+
 	auxLvl = numLevel;
 	spritesheet.loadFromFile("images/BG" + to_string(numLevel) + ".png", TEXTURE_PIXEL_FORMAT_RGBA);
 	background = Sprite::createSprite(glm::vec2(384, 208), glm::vec2(1.f, 1.f), &spritesheet, &texProgram);
 	background->setPosition(glm::vec2(SCREEN_X, SCREEN_Y));
 	map = TileMap::createTileMap("levels/Mapa" + to_string(numLevel) + ".txt", glm::vec2(0.f, 0.f), texProgram);
-	
+
 	player = new Player();
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
@@ -87,7 +99,7 @@ void Scene::init(const int& numLevel, int videsRest)
 	hook->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	hook->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
 	hook->setTileMap(map);
-	
+
 	bubble = new Bubble();
 	bubble->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	bubble->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
@@ -97,7 +109,7 @@ void Scene::init(const int& numLevel, int videsRest)
 		// Select which font you want to use
 		//if (!text[i].init("fonts/OpenSans-Regular.ttf"))
 		//if(!text.init("fonts/OpenSans-Bold.ttf"))
-		if(!text[i].init("fonts/DroidSerif.ttf"))
+		if (!text[i].init("fonts/DroidSerif.ttf"))
 			cout << "Could not load font!!!" << endl;
 	}
 
@@ -109,6 +121,7 @@ void Scene::init(const int& numLevel, int videsRest)
 
 	projection = glm::ortho(0.f, 384.f, 248.f, 0.f);
 	currentTime = 0.0f;
+	
 }
 
 void Scene::update(int deltaTime)
@@ -127,8 +140,22 @@ void Scene::update(int deltaTime)
 	{
 		if (!hit && vides >= 0)
 		{
+			if (vides > 0)
+			{
+
+				irrklang::ISound* sound = engine->play2D("sounds/LapaSengancha.wav", false, false, true);
+				sound->setVolume(0.5f);
+				restart = true;
+			}
+			else if (vides == 0)
+			{
+				engine->drop();
+				SoundManager::instance().init();
+				engine = SoundManager::instance().getSoundEngine();
+				irrklang::ISound* sound = engine->play2D("sounds/Game Over.wav", false, false, true);
+				sound->setVolume(0.5f);
+			}
 			hit = true;
-			restart = true;
 			vides -= 1;
 		}
 	}
@@ -137,6 +164,7 @@ void Scene::update(int deltaTime)
 	{
 		over = true;
 		restart = false;
+		write = true;
 		Scene::init(auxLvl, vides);
 	}
 
@@ -144,6 +172,7 @@ void Scene::update(int deltaTime)
 	{
 		if (vides >= 0)
 		{
+			write = true;
 			restart = true;
 			temps = 181.f;
 			vides -= 1;
@@ -153,6 +182,7 @@ void Scene::update(int deltaTime)
 
 	if (restart)
 	{
+		write = true;
 		Scene::init(auxLvl, vides);
 	}
 
@@ -197,7 +227,7 @@ void Scene::render()
 		if (auxLvl == 1)
 		{
 			gameO[0].render("Stage 1", glm::vec2(570, 780), 48, glm::vec4(1, 1, 1, 1));
-			gameO[1].render("Mt. Fuji", glm::vec2(570, 840), 48, glm::vec4(1, 1, 1, 1));
+			gameO[1].render("Mt. Fuji", glm::vec2(560, 840), 48, glm::vec4(1, 1, 1, 1));
 		}
 
 		if (auxLvl == 2)

@@ -26,4 +26,4 @@ private:
 	ISoundEngine* engine;
 };
 
-#endif // _SOUND_MANAGER_INCLUDE
+#endif  _SOUND_MANAGER_INCLUDE

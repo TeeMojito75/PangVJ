@@ -53,6 +53,7 @@ private:
 	bool hit;
 	bool restart;
 	bool over;
+	bool write;
 
 	glm::ivec2 posPaux;
 	glm::ivec2 posBaux;

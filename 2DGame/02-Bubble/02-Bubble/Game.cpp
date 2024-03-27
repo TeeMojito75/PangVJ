@@ -24,6 +24,7 @@ void Game::init()
 
 	irrklang::ISound* sound = engine->play2D("sounds/02 Stage 01-03 (Mt. Fuji).wav", true, false, true);
 	sound->setVolume(0.5f);
+	
 }
 
 bool Game::update(int deltaTime)
