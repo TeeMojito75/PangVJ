@@ -18,6 +18,8 @@ Scene::Scene()
 	map = NULL;
 	player = NULL;
 	hook = NULL;
+	power = NULL;
+	food = NULL;
 	bubbleBig[0] = NULL;
 	bubbleBig[1] = NULL;
 	background = NULL;
@@ -102,6 +104,12 @@ void Scene::init(const int& numLevel, int videsRest)
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
 	player->setTileMap(map);
+
+	food = new Food();
+	food->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 0);
+	food->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
+	food->setTileMap(map);
+
 	hit = false;
 
 	//Reset bolles petites si s'ha mort
@@ -185,6 +193,8 @@ void Scene::update(int deltaTime)
 {
 	currentTime += deltaTime;
 	player->update(deltaTime);
+	if (food != NULL)food->update(deltaTime);
+	if (power != NULL) power->update(deltaTime);
 	if(hook != NULL) hook->update(deltaTime);
 
 	for (int i = 0; i < 2; i++)
@@ -518,6 +528,12 @@ void Scene::update(int deltaTime)
 		delete hook;
 		hook = NULL;
 		puntuacio += 200;
+
+		power = new Power();
+		power->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 0);
+		power->setPosition(bubbleBig[0]->getPosB());
+		power->setTileMap(map);
+
 		petarB1 = true;
 		bubbleMid[0] = new Bubble();
 		bubbleMid[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
@@ -671,6 +687,8 @@ void Scene::render()
 	background->render();
 	map->render();
 	player->render();
+	if (food != NULL) food->render();
+	if (power != NULL) power->render();
 	if (hook != NULL) hook->render();
 	
 	

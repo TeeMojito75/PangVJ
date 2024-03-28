@@ -11,7 +11,7 @@ class Power
 {
 
 public:
-	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram);
+	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, int type);
 	void update(int deltaTime);
 	void render();
 

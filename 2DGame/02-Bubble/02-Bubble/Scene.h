@@ -9,6 +9,8 @@
 #include "Bubble.h"
 #include "Text.h"
 #include "Hook.h"
+#include "Power.h"
+#include "Food.h"
 #include <irrKlang.h>
 #include <set>
 using namespace irrklang;
@@ -38,6 +40,8 @@ private:
 	TileMap *map;
 	Player *player;
 	Hook* hook;
+	Power* power;
+	Food* food;
 
 	Bubble* bubbleBig[2];
 	Bubble* bubbleMid[4];

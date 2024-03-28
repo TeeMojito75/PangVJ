@@ -3,44 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Bubble.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Bubble.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Power.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Power.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Food.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Food.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Power.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Power.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Food.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Food.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Bubble.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Bubble.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Power.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Power.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Bubble.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Bubble.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Bubble.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5BE6CA2A-E5A8-40CC-9015-047CE0C78036}|02-Bubble\\02-Bubble.vcxproj|solutionrelative:02-Bubble\\Bubble.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,30 +50,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 245,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Scene.h",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Scene.h",
               "RelativeDocumentMoniker": "02-Bubble\\Scene.h",
               "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Scene.h",
               "RelativeToolTip": "02-Bubble\\Scene.h",
-              "ViewState": "AQIAACAAAAAAAAAAAAAvwEcAAAAOAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-26T10:24:31.71Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "Scene.cpp",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Scene.cpp",
               "RelativeDocumentMoniker": "02-Bubble\\Scene.cpp",
               "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Scene.cpp",
               "RelativeToolTip": "02-Bubble\\Scene.cpp",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAACMAAAATAAAA",
+              "ViewState": "AQIAAJ8AAAAAAAAAAAAAAMMAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-25T17:42:45.706Z",
               "IsPinned": true,
@@ -81,72 +82,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Power.cpp",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Power.cpp",
               "RelativeDocumentMoniker": "02-Bubble\\Power.cpp",
               "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Power.cpp",
               "RelativeToolTip": "02-Bubble\\Power.cpp",
-              "ViewState": "AQIAABEAAAAAAAAAAAAQwEcAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-28T18:18:30.339Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Food.cpp",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.cpp",
               "RelativeDocumentMoniker": "02-Bubble\\Food.cpp",
-              "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.cpp",
-              "RelativeToolTip": "02-Bubble\\Food.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAABAAAA",
+              "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.cpp*",
+              "RelativeToolTip": "02-Bubble\\Food.cpp*",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACYAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-28T18:18:14.947Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Power.h",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Power.h",
               "RelativeDocumentMoniker": "02-Bubble\\Power.h",
               "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Power.h",
               "RelativeToolTip": "02-Bubble\\Power.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAVAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-28T18:18:07.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Food.h",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.h",
               "RelativeDocumentMoniker": "02-Bubble\\Food.h",
               "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Food.h",
               "RelativeToolTip": "02-Bubble\\Food.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAUAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-28T18:18:00.06Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Game.cpp",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Game.cpp",
               "RelativeDocumentMoniker": "02-Bubble\\Game.cpp",
               "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Game.cpp",
               "RelativeToolTip": "02-Bubble\\Game.cpp",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAAAGEAAAAZAAAA",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAGEAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-28T18:14:19.219Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Bubble.h",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Bubble.h",
               "RelativeDocumentMoniker": "02-Bubble\\Bubble.h",
@@ -158,28 +159,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "Bubble.cpp",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Bubble.cpp",
               "RelativeDocumentMoniker": "02-Bubble\\Bubble.cpp",
-              "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Bubble.cpp*",
-              "RelativeToolTip": "02-Bubble\\Bubble.cpp*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAARAAAA",
+              "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Bubble.cpp",
+              "RelativeToolTip": "02-Bubble\\Bubble.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-28T11:55:01.648Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Player.cpp",
               "RelativeDocumentMoniker": "02-Bubble\\Player.cpp",
               "ToolTip": "C:\\Users\\ebhta\\source\\repos\\PangVJ\\2DGame\\02-Bubble\\02-Bubble\\Player.cpp",
               "RelativeToolTip": "02-Bubble\\Player.cpp",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAEoAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-28T11:51:21.589Z"
+              "WhenOpened": "2024-03-28T11:51:21.589Z",
+              "EditorCaption": ""
             }
           ]
         }
