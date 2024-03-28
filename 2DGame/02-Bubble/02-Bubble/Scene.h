@@ -63,10 +63,11 @@ private:
 	bool music;
 
 	bool invencible;
-	bool creacio;
+	bool petar1;
+	bool petar2;
 
 	glm::ivec2 posPaux;
-	glm::ivec2 posBaux[2];
+	glm::ivec2 posBaux[14];
 
 protected:
 	Sprite* background;

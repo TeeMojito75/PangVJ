@@ -13,7 +13,7 @@ void Hook::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
 	highLength = 34;
 	sprite->setNumberAnimations(1);
 
-	sprite->setAnimationSpeed(0, 32);
+	sprite->setAnimationSpeed(0, 64);
 
 	for (int i = 0; i < 23; i++) {
 		sprite->addKeyframe(0, glm::vec2(i / 23.f, 0.f));
@@ -33,7 +33,7 @@ void Hook::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
 
 void Hook::update(int deltaTime)
 {
-	highLength += 1.15;
+	highLength += 2.3;
 	sprite->update(deltaTime);
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posHook.x), float(tileMapDispl.y + posHook.y)));
 }

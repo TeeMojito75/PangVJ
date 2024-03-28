@@ -33,9 +33,9 @@ Scene::Scene()
 	music = true;
 	auxLvl = 1;
 
-	invencible = true;
-	creacio = false;
-
+	invencible = false;
+	petar1 = false;
+	petar2 = false;
 	SoundManager::instance().init();
 	engine = SoundManager::instance().getSoundEngine();
 }
@@ -100,6 +100,17 @@ void Scene::init(const int& numLevel, int videsRest)
 	player->setTileMap(map);
 	hit = false;
 
+	if (petar1) {
+		bubbleMid[0] = NULL;
+		bubbleMid[1] = NULL;
+		petar1 = false;
+	}
+	if (petar2) {
+		bubbleMid[2] = NULL;
+		bubbleMid[3] = NULL;
+		petar2 = false;
+	}
+
 	bubbleBig[0] = new Bubble();
 	bubbleBig[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
 	bubbleBig[0]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
@@ -157,9 +168,17 @@ void Scene::update(int deltaTime)
 			bubbleBig[i]->update(deltaTime);
 	}
 
-	if (creacio)
+	if (petar1)
 	{
 		for (int i = 0; i < 2; i++)
+		{
+				bubbleMid[i]->update(deltaTime);
+		}
+	}
+
+	if (petar2)
+	{
+		for (int i = 2; i < 4; i++)
 		{
 			bubbleMid[i]->update(deltaTime);
 		}
@@ -169,36 +188,107 @@ void Scene::update(int deltaTime)
 
 	posPaux = player->getPosP();
 
+	//bucle 1 per posició grosses
 	for (int i = 0; i < 2; i++)
 	{
 		if (!bubbleBig[i]->getElimina()) {
 			posBaux[i] = bubbleBig[i]->getPosB();
-		}
-		
-		if (!invencible && (posPaux.x < posBaux[i].x + 10 && posPaux.x + 32 > posBaux[i].x + 5) &&
-			(posPaux.y < posBaux[i].y + 10 && posPaux.y + 32 > posBaux[i].y + 5))
-		{
-			if (!hit && vides >= 0)
+
+			if (!invencible && (posPaux.x < posBaux[i].x + 10 && posPaux.x + 32 > posBaux[i].x + 5) &&
+				(posPaux.y < posBaux[i].y + 10 && posPaux.y + 32 > posBaux[i].y + 5))
 			{
-				if (vides > 0)
+				if (!hit && vides >= 0)
 				{
-					irrklang::ISound* sound = engine->play2D("sounds/LapaSengancha.wav", false, false, true);
-					sound->setVolume(0.5f);
-					restart = true;
+					if (vides > 0)
+					{
+						irrklang::ISound* sound = engine->play2D("sounds/LapaSengancha.wav", false, false, true);
+						sound->setVolume(0.5f);
+						restart = true;
+					}
+					else if (vides == 0)
+					{
+						engine->drop();
+						SoundManager::instance().init();
+						engine = SoundManager::instance().getSoundEngine();
+						irrklang::ISound* sound = engine->play2D("sounds/Game Over.wav", false, false, true);
+						sound->setVolume(0.5f);
+					}
+					hit = true;
+					vides -= 1;
 				}
-				else if (vides == 0)
-				{
-					engine->drop();
-					SoundManager::instance().init();
-					engine = SoundManager::instance().getSoundEngine();
-					irrklang::ISound* sound = engine->play2D("sounds/Game Over.wav", false, false, true);
-					sound->setVolume(0.5f);
-				}
-				hit = true;
-				vides -= 1;
 			}
 		}
 	}
+
+	if (petar1) {
+		for (int i = 0; i < 2; i++)
+		{
+			if (!bubbleMid[i]->getElimina()) {
+				posBaux[i+2] = bubbleMid[i]->getPosB();
+
+				if (!invencible && (posPaux.x < posBaux[i+2].x + 10 && posPaux.x + 32 > posBaux[i+2].x + 5) &&
+					(posPaux.y < posBaux[i+2].y + 10 && posPaux.y + 32 > posBaux[i+2].y + 5))
+				{
+					if (!hit && vides >= 0)
+					{
+						if (vides > 0)
+						{
+							irrklang::ISound* sound = engine->play2D("sounds/LapaSengancha.wav", false, false, true);
+							sound->setVolume(0.5f);
+							restart = true;
+						}
+						else if (vides == 0)
+						{
+							engine->drop();
+							SoundManager::instance().init();
+							engine = SoundManager::instance().getSoundEngine();
+							irrklang::ISound* sound = engine->play2D("sounds/Game Over.wav", false, false, true);
+							sound->setVolume(0.5f);
+						}
+						hit = true;
+						vides -= 1;
+					}
+				}
+			}
+		}
+	}
+
+	//bucle colisions segona part bolles mitjanes
+	if (petar2) {
+		for (int i = 2; i < 4; i++)
+		{
+			if (!bubbleMid[i]->getElimina()) {
+				posBaux[i + 2] = bubbleMid[i]->getPosB();
+
+				if (!invencible && (posPaux.x < posBaux[i+2].x + 10 && posPaux.x + 32 > posBaux[i+2].x + 5) &&
+					(posPaux.y < posBaux[i+2].y + 10 && posPaux.y + 32 > posBaux[i+2].y + 5))
+				{
+					if (!hit && vides >= 0)
+					{
+						if (vides > 0)
+						{
+							irrklang::ISound* sound = engine->play2D("sounds/LapaSengancha.wav", false, false, true);
+							sound->setVolume(0.5f);
+							restart = true;
+						}
+						else if (vides == 0)
+						{
+							engine->drop();
+							SoundManager::instance().init();
+							engine = SoundManager::instance().getSoundEngine();
+							irrklang::ISound* sound = engine->play2D("sounds/Game Over.wav", false, false, true);
+							sound->setVolume(0.5f);
+						}
+						hit = true;
+						vides -= 1;
+					}
+				}
+			}
+		}
+	}
+
+
+
 
 	if (vides < 0)
 	{
@@ -226,24 +316,7 @@ void Scene::update(int deltaTime)
 		Scene::init(auxLvl, vides);
 	}
 
-	/*
-	if (Game::instance().getKey(GLFW_KEY_D))
-	{
-		creacio = true;
-		bubbleMid[0] = new Bubble();
-		bubbleMid[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16,16));
-		bubbleMid[0]->setPosition(posBaux[0]);
-		bubbleMid[0]->setTileMap(map);
-
-		bubbleMid[1] = new Bubble();
-		bubbleMid[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
-		bubbleMid[1]->setPosition(posBaux[0]);
-		bubbleMid[1]->changeDir();
-		bubbleMid[1]->setTileMap(map);
-		
-		bubbleBig[0]->tocada();
-	}
-	*/
+	
 	if (Game::instance().getKey(GLFW_KEY_S) && hook == NULL) {
 		hook = new Hook();
 		hook->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
@@ -255,11 +328,12 @@ void Scene::update(int deltaTime)
 		delete hook;
 		hook = NULL;
 	}
+	
 	if (hook != NULL && circleRect(bubbleBig[0]->getPosB().x + 16, bubbleBig[0]->getPosB().y + 16, 16, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength())) {
 		delete hook;
 		hook = NULL;
 		puntuacio += 200;
-		creacio = true;
+		petar1 = true;
 		bubbleMid[0] = new Bubble();
 		bubbleMid[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
 		bubbleMid[0]->setPosition(posBaux[0]);
@@ -273,6 +347,26 @@ void Scene::update(int deltaTime)
 
 		bubbleBig[0]->tocada();
 	}
+
+	if (hook != NULL && circleRect(bubbleBig[1]->getPosB().x + 16, bubbleBig[1]->getPosB().y + 16, 16, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength())) {
+		delete hook;
+		hook = NULL;
+		puntuacio += 200;
+		petar2 = true;
+		bubbleMid[2] = new Bubble();
+		bubbleMid[2]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
+		bubbleMid[2]->setPosition(posBaux[1]);
+		bubbleMid[2]->setTileMap(map);
+
+		bubbleMid[3] = new Bubble();
+		bubbleMid[3]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
+		bubbleMid[3]->setPosition(posBaux[1]);
+		bubbleMid[3]->changeDir();
+		bubbleMid[3]->setTileMap(map);
+
+		bubbleBig[1]->tocada();
+	}
+
 }
 
 bool Scene::circleRect(float cx, float cy, float radius, float rx, float ry, float rw, float rh) {
@@ -320,9 +414,18 @@ void Scene::render()
 			bubbleBig[i]->render();
 	}
 
-	if (creacio)
+	if (petar1)
 	{
 		for (int i = 0; i < 2; i++)
+		{
+			bubbleMid[i]->render();		
+		}
+
+	}
+
+	if (petar2)
+	{
+		for (int i = 2; i < 4; i++)
 		{
 			bubbleMid[i]->render();
 		}
