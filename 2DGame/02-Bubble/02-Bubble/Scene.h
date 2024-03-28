@@ -63,8 +63,13 @@ private:
 	bool music;
 
 	bool invencible;
-	bool petar1;
-	bool petar2;
+	
+	bool petarB1;
+	bool petarB2;
+	bool petarM1;
+	bool petarM2;
+	bool petarM3;
+	bool petarM4;
 
 	glm::ivec2 posPaux;
 	glm::ivec2 posBaux[14];

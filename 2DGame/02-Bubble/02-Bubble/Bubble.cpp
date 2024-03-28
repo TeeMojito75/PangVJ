@@ -33,7 +33,7 @@ void Bubble::update(int deltaTime)
 		posBubble.x -= 1.2;
 		if (map->collisionMoveLeft(posBubble, size))
 		{
-			posBubble.x += 2;
+			posBubble.x += 1.2;
 			dir = !dir;
 		}
 	
@@ -41,7 +41,7 @@ void Bubble::update(int deltaTime)
 		posBubble.x += 1.2;
 		if (map->collisionMoveRight(posBubble, size))
 		{
-			posBubble.x -= 2;
+			posBubble.x -= 1.2;
 			dir = !dir;
 		}
 
