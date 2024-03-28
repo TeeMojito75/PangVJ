@@ -27,6 +27,8 @@ public:
 	void init(const int& numLvl, int videsRest);
 	void update(int deltaTime);
 	void render();
+	bool circleRect(float cx, float cy, float radius, float rx, float ry, float rw, float rh);
+
 
 private:
 	void initShaders();

@@ -100,11 +100,6 @@ void Scene::init(const int& numLevel, int videsRest)
 	player->setTileMap(map);
 	hit = false;
 
-	hook = new Hook();
-	hook->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
-	hook->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
-	hook->setTileMap(map);
-
 	bubbleBig[0] = new Bubble();
 	bubbleBig[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
 	bubbleBig[0]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
@@ -154,7 +149,7 @@ void Scene::update(int deltaTime)
 {
 	currentTime += deltaTime;
 	player->update(deltaTime);
-	hook->update(deltaTime);
+	if(hook != NULL) hook->update(deltaTime);
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -231,7 +226,7 @@ void Scene::update(int deltaTime)
 		Scene::init(auxLvl, vides);
 	}
 
-	if (Game::instance().getKey(GLFW_KEY_S))
+	if (Game::instance().getKey(GLFW_KEY_D))
 	{
 		creacio = true;
 		bubbleMid[0] = new Bubble();
@@ -247,7 +242,45 @@ void Scene::update(int deltaTime)
 		
 		bubbleBig[0]->tocada();
 	}
+	if (Game::instance().getKey(GLFW_KEY_S) && hook == NULL) {
+		hook = new Hook();
+		hook->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+		hook->setPosition(glm::vec2(player->getPosP().x + 16 / 8 * map->getTileSize(), player->getPosP().y - 187 + 32 / 8 * map->getTileSize()));
+		hook->setTileMap(map);
+	}
 
+	if (hook != NULL && map->collisionRoof(glm::vec2(hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength()), glm::ivec2(9, hook->getHighLength()))) {
+		delete hook;
+		hook = NULL;
+	}
+	if (hook != NULL && circleRect(bubbleBig[0]->getPosB().x + 16, bubbleBig[0]->getPosB().y + 16, 16, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength())) {
+		delete hook;
+		hook = NULL;
+	}
+}
+
+bool Scene::circleRect(float cx, float cy, float radius, float rx, float ry, float rw, float rh) {
+
+	// temporary variables to set edges for testing
+	float testX = cx;
+	float testY = cy;
+
+	// which edge is closest?
+	if (cx < rx)         testX = rx;      // test left edge
+	else if (cx > rx + rw) testX = rx + rw;   // right edge
+	if (cy < ry)         testY = ry;      // top edge
+	else if (cy > ry + rh) testY = ry + rh;   // bottom edge
+
+	// get distance from closest edges
+	float distX = cx - testX;
+	float distY = cy - testY;
+	float distance = sqrt((distX * distX) + (distY * distY));
+
+	// if the distance is less than the radius, collision!
+	if (distance <= radius) {
+		return true;
+	}
+	return false;
 }
 
 void Scene::render()
@@ -263,7 +296,7 @@ void Scene::render()
 	background->render();
 	map->render();
 	player->render();
-	hook->render();
+	if (hook != NULL) hook->render();
 	
 	for (int i = 0; i < 2; i++)
 	{
