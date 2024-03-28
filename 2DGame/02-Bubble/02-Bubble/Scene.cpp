@@ -122,19 +122,19 @@ void Scene::init(const int& numLevel, int videsRest)
 	if (numLevel == 1 && music)
 	{
 		irrklang::ISound* sound = engine->play2D("sounds/Stage1.wav", true, false, true);
-		sound->setVolume(0.3f);
+		sound->setVolume(0.05f);
 		music = false;
 	}
 	else if (numLevel == 2 && music)
 	{
 		irrklang::ISound* sound = engine->play2D("sounds/Stage2.wav", true, false, true);
-		sound->setVolume(0.3f);
+		sound->setVolume(0.05f);
 		music = false;
 	}
 	else if (numLevel == 3 && music)
 	{
 		irrklang::ISound* sound = engine->play2D("sounds/Stage3.wav", true, false, true);
-		sound->setVolume(0.3f);
+		sound->setVolume(0.05f);
 		music = false;
 	}
 
