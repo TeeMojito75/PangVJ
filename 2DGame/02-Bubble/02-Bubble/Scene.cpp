@@ -18,11 +18,8 @@ Scene::Scene()
 	map = NULL;
 	player = NULL;
 	hook = NULL;
-<<<<<<< Updated upstream
 	bubbleBig[0] = NULL;
 	bubbleBig[1] = NULL;
-=======
->>>>>>> Stashed changes
 	background = NULL;
 	currentTime = NULL;
 
@@ -108,23 +105,15 @@ void Scene::init(const int& numLevel, int videsRest)
 	hook->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
 	hook->setTileMap(map);
 
-<<<<<<< Updated upstream
 	bubbleBig[0] = new Bubble();
 	bubbleBig[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
 	bubbleBig[0]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
 	bubbleBig[0]->setTileMap(map);
-
 	bubbleBig[1] = new Bubble();
 	bubbleBig[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
 	bubbleBig[1]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
 	bubbleBig[1]->changeDir();
 	bubbleBig[1]->setTileMap(map);
-=======
-	bubble[0] = new Bubble();
-	bubble[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
-	bubble[0]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
-	bubble[0]->setTileMap(map);
->>>>>>> Stashed changes
 
 	for (int i = 0; i < 3; i++) {
 		if (!text[i].init("fonts/DroidSerif.ttf")) 
@@ -166,7 +155,6 @@ void Scene::update(int deltaTime)
 	currentTime += deltaTime;
 	player->update(deltaTime);
 	hook->update(deltaTime);
-<<<<<<< Updated upstream
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -184,19 +172,6 @@ void Scene::update(int deltaTime)
 	if (!restart) temps -= 0.012f;
 
 	posPaux = player->getPosP();
-=======
-	
-	for (int i = 0; i < sizeof(bubble); i++)
-	{
-		if (bubble[i] != NULL)
-			bubble[i]->update(deltaTime);
-	}
-
-	if (!restart) temps -= 0.012f;
-
-	posPaux = player->getPosP();
-	posBaux = bubble[0]->getPosB();
->>>>>>> Stashed changes
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -252,7 +227,6 @@ void Scene::update(int deltaTime)
 		Scene::init(auxLvl, vides);
 	}
 
-<<<<<<< Updated upstream
 	if (Game::instance().getKey(GLFW_KEY_S))
 	{
 		creacio = true;
@@ -266,23 +240,10 @@ void Scene::update(int deltaTime)
 		bubbleMid[1]->setPosition(posBaux[0]);
 		bubbleMid[1]->changeDir();
 		bubbleMid[1]->setTileMap(map);
+
+		delete bubbleBig[0];
 	}
 
-=======
-
-	//proves bombolla
-	if (Game::instance().getKey(GLFW_KEY_S))
-	{
-		bubble[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y),texProgram, bubble[0]->getSizeB()/2);
-		bubble[0]->setPosition(bubble[0]->getPosB());
-
-		bubble[1] = new Bubble();
-		bubble[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
-		bubble[1]->setPosition(bubble[0]->getPosB());
-		bubble[1]->changeDir();
-		bubble[1]->setTileMap(map);
-	}
->>>>>>> Stashed changes
 }
 
 void Scene::render()
@@ -299,7 +260,6 @@ void Scene::render()
 	map->render();
 	player->render();
 	hook->render();
-<<<<<<< Updated upstream
 	
 	for (int i = 0; i < 2; i++)
 	{
@@ -312,15 +272,9 @@ void Scene::render()
 		{
 			bubbleMid[i]->render();
 		}
-=======
 
-	for (int i = 0; i < sizeof(bubble); i++)
-	{
-		if (bubble[i] != NULL)
-			bubble[i]->render();
->>>>>>> Stashed changes
 	}
-	
+
 	text[0].render("Puntuacio: " + to_string(puntuacio), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
 	if (vides >= 0) text[1].render("Vides: " + to_string(vides), glm::vec2(130, 840), 48, glm::vec4(1, 1, 1, 1));
 	if (temps > 0.f) text[2].render("Temps: " + to_string(int(temps)), glm::vec2(1050, 780), 48, glm::vec4(1, 1, 1, 1));

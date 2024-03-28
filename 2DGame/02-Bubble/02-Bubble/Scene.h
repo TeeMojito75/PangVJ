@@ -36,14 +36,10 @@ private:
 	TileMap *map;
 	Player *player;
 	Hook* hook;
-<<<<<<< Updated upstream
 
 	Bubble* bubbleBig[2];
 	Bubble* bubbleMid[2];
 
-=======
-	Bubble* bubble[10];
->>>>>>> Stashed changes
 	ShaderProgram texProgram;
 	float currentTime;
 	glm::mat4 projection;
@@ -74,5 +70,5 @@ protected:
 };
 
 
-#endif // _SCENE_INCLUDE
+#endif  _SCENE_INCLUDE
 

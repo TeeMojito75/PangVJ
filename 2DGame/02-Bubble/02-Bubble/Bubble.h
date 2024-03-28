@@ -9,11 +9,9 @@
 class Bubble
 {
 public:
-<<<<<<< Updated upstream
+
 	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, glm::ivec2 sizeB);
-=======
-	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, const glm::ivec2 size);
->>>>>>> Stashed changes
+
 	void update(int deltaTime);
 	void render();
 
@@ -21,10 +19,9 @@ public:
 	void setPosition(const glm::vec2& pos);
 
 	glm::ivec2 getPosB();
-<<<<<<< Updated upstream
-=======
+
 	glm::ivec2 getSizeB();
->>>>>>> Stashed changes
+
 	void changeDir();
 
 private:
