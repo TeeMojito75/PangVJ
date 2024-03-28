@@ -35,14 +35,16 @@ private:
 	TileMap *map;
 	Player *player;
 	Hook* hook;
-	Bubble* bubble;
+
+	Bubble* bubbleBig[2];
+	Bubble* bubbleMid[2];
+
 	ShaderProgram texProgram;
 	float currentTime;
 	glm::mat4 projection;
 	Texture spritesheet;
 
 	int auxLvl;
-	
 	Text text[3];
 	Text gameO[2];
 
@@ -56,8 +58,12 @@ private:
 	bool write;
 	bool music;
 
+	bool invencible;
+	bool creacio;
+
 	glm::ivec2 posPaux;
-	glm::ivec2 posBaux;
+	glm::ivec2 posBaux[2];
+
 protected:
 	Sprite* background;
 };

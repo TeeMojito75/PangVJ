@@ -18,7 +18,8 @@ Scene::Scene()
 	map = NULL;
 	player = NULL;
 	hook = NULL;
-	bubble = NULL;
+	bubbleBig[0] = NULL;
+	bubbleBig[1] = NULL;
 	background = NULL;
 	currentTime = NULL;
 
@@ -32,6 +33,9 @@ Scene::Scene()
 	music = true;
 	auxLvl = 1;
 
+	invencible = true;
+	creacio = false;
+
 	SoundManager::instance().init();
 	engine = SoundManager::instance().getSoundEngine();
 }
@@ -44,8 +48,6 @@ Scene::~Scene()
 		delete player;
 	if (hook != NULL)
 		delete hook;
-	if (bubble != NULL)
-		delete bubble;
 	if (background != NULL)
 		delete background;
 	if (engine != NULL)
@@ -103,10 +105,16 @@ void Scene::init(const int& numLevel, int videsRest)
 	hook->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
 	hook->setTileMap(map);
 
-	bubble = new Bubble();
-	bubble->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
-	bubble->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
-	bubble->setTileMap(map);
+	bubbleBig[0] = new Bubble();
+	bubbleBig[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
+	bubbleBig[0]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
+	bubbleBig[0]->setTileMap(map);
+
+	bubbleBig[1] = new Bubble();
+	bubbleBig[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
+	bubbleBig[1]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
+	bubbleBig[1]->changeDir();
+	bubbleBig[1]->setTileMap(map);
 
 	for (int i = 0; i < 3; i++) {
 		if (!text[i].init("fonts/DroidSerif.ttf")) 
@@ -148,33 +156,49 @@ void Scene::update(int deltaTime)
 	currentTime += deltaTime;
 	player->update(deltaTime);
 	hook->update(deltaTime);
-	bubble->update(deltaTime);
+
+	for (int i = 0; i < 2; i++)
+	{
+		bubbleBig[i]->update(deltaTime);
+	}
+
+	if (creacio)
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			bubbleMid[i]->update(deltaTime);
+		}
+	}
+	
 	if (!restart) temps -= 0.012f;
 
 	posPaux = player->getPosP();
-	posBaux = bubble->getPosB();
 
-	if ((posPaux.x < posBaux.x + 10 && posPaux.x + 32 > posBaux.x + 5) &&
-		(posPaux.y < posBaux.y + 10 && posPaux.y + 32 > posBaux.y + 5))
+	for (int i = 0; i < 2; i++)
 	{
-		if (!hit && vides >= 0)
+		posBaux[i] = bubbleBig[i]->getPosB();
+		if (!invencible && (posPaux.x < posBaux[i].x + 10 && posPaux.x + 32 > posBaux[i].x + 5) &&
+			(posPaux.y < posBaux[i].y + 10 && posPaux.y + 32 > posBaux[i].y + 5))
 		{
-			if (vides > 0)
+			if (!hit && vides >= 0)
 			{
-				irrklang::ISound* sound = engine->play2D("sounds/LapaSengancha.wav", false, false, true);
-				sound->setVolume(0.5f);
-				restart = true;
+				if (vides > 0)
+				{
+					irrklang::ISound* sound = engine->play2D("sounds/LapaSengancha.wav", false, false, true);
+					sound->setVolume(0.5f);
+					restart = true;
+				}
+				else if (vides == 0)
+				{
+					engine->drop();
+					SoundManager::instance().init();
+					engine = SoundManager::instance().getSoundEngine();
+					irrklang::ISound* sound = engine->play2D("sounds/Game Over.wav", false, false, true);
+					sound->setVolume(0.5f);
+				}
+				hit = true;
+				vides -= 1;
 			}
-			else if (vides == 0)
-			{
-				engine->drop();
-				SoundManager::instance().init();
-				engine = SoundManager::instance().getSoundEngine();
-				irrklang::ISound* sound = engine->play2D("sounds/Game Over.wav", false, false, true);
-				sound->setVolume(0.5f);
-			}
-			hit = true;
-			vides -= 1;
 		}
 	}
 
@@ -203,6 +227,22 @@ void Scene::update(int deltaTime)
 		write = true;
 		Scene::init(auxLvl, vides);
 	}
+
+	if (Game::instance().getKey(GLFW_KEY_S))
+	{
+		creacio = true;
+		bubbleMid[0] = new Bubble();
+		bubbleMid[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16,16));
+		bubbleMid[0]->setPosition(posBaux[0]);
+		bubbleMid[0]->setTileMap(map);
+
+		bubbleMid[1] = new Bubble();
+		bubbleMid[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
+		bubbleMid[1]->setPosition(posBaux[0]);
+		bubbleMid[1]->changeDir();
+		bubbleMid[1]->setTileMap(map);
+	}
+
 }
 
 void Scene::render()
@@ -219,7 +259,19 @@ void Scene::render()
 	map->render();
 	player->render();
 	hook->render();
-	bubble->render();
+	
+	for (int i = 0; i < 2; i++)
+	{
+		bubbleBig[i]->render();
+	}
+
+	if (creacio)
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			bubbleMid[i]->render();
+		}
+	}
 	
 	text[0].render("Puntuacio: " + to_string(puntuacio), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
 	if (vides >= 0) text[1].render("Vides: " + to_string(vides), glm::vec2(130, 840), 48, glm::vec4(1, 1, 1, 1));

@@ -10,10 +10,11 @@
 
 
 
-void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
+void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, glm::ivec2 sizeB)
 {
 	spritesheet.loadFromFile("images/Boles.png", TEXTURE_PIXEL_FORMAT_RGBA);
-	sprite = Sprite::createSprite(glm::ivec2(32, 32), glm::vec2(0.46, 0.33), &spritesheet, &shaderProgram);
+	sprite = Sprite::createSprite(sizeB, glm::vec2(0.46, 0.33), &spritesheet, &shaderProgram);
+	size = sizeB;
 	tileMapDispl = tileMapPos;
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posBubble.x), float(tileMapDispl.y + posBubble.y)));
 	dir = false;
@@ -27,7 +28,7 @@ void Bubble::update(int deltaTime)
 	
 		if (dir == false)
 		posBubble.x -= 2;
-		if (map->collisionMoveLeft(posBubble, glm::ivec2(32, 32)))
+		if (map->collisionMoveLeft(posBubble, size))
 		{
 			posBubble.x += 2;
 			dir = !dir;
@@ -35,7 +36,7 @@ void Bubble::update(int deltaTime)
 	
 		if (dir == true)
 		posBubble.x += 2;
-		if (map->collisionMoveRight(posBubble, glm::ivec2(32, 32)))
+		if (map->collisionMoveRight(posBubble, size))
 		{
 			posBubble.x -= 2;
 			dir = !dir;
@@ -53,14 +54,14 @@ void Bubble::update(int deltaTime)
 			{
 				posBubble.y = int(startY - 86 * sin(3.14159f * jumpAngle / 180.f));
 				if (jumpAngle > 90);
-				bJumping = (!map->collisionMoveDown(posBubble, glm::ivec2(32, 32), &posBubble.y)
-						&& !map->collisionRoof(posBubble, glm::ivec2(32, 32)));
+				bJumping = (!map->collisionMoveDown(posBubble, size, &posBubble.y)
+						&& !map->collisionRoof(posBubble, size));
 			}
 		}
 		else
 		{
 			posBubble.y += FALL_STEP;
-			if (map->collisionMoveDown(posBubble, glm::ivec2(32, 32), &posBubble.y))
+			if (map->collisionMoveDown(posBubble, size, &posBubble.y))
 			{
 					bJumping = true;
 					jumpAngle = 0;
@@ -92,4 +93,9 @@ void Bubble::setPosition(const glm::vec2& pos)
 glm::ivec2 Bubble::getPosB()
 {
 	return posBubble;
+}
+
+void Bubble::changeDir()
+{
+	dir = !dir;
 }

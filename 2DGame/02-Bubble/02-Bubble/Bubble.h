@@ -10,7 +10,7 @@ class Bubble
 {
 
 public:
-	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram);
+	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, glm::ivec2 sizeB);
 	void update(int deltaTime);
 	void render();
 
@@ -18,9 +18,10 @@ public:
 	void setPosition(const glm::vec2& pos);
 
 	glm::ivec2 getPosB();
+	void changeDir();
 
 private:
-	glm::ivec2 tileMapDispl, posBubble;
+	glm::ivec2 tileMapDispl, posBubble, size;
 	Texture spritesheet;
 	Sprite* sprite;
 	TileMap* map;
