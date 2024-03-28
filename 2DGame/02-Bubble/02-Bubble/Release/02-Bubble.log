@@ -1,17 +1,8 @@
-﻿  Bubble.cpp
-C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Bubble.cpp(58,24): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-  Controls.cpp
-  Game.cpp
-  Hook.cpp
-  Levels.cpp
-  main.cpp
-  Menu.cpp
-  Player.cpp
-  Scene.cpp
+﻿  Scene.cpp
 SOIL.lib(SOIL.obj) : warning LNK4075: se omite '/EDITANDCONTINUE' debido a la especificación '/OPT:ICF'
 LINK : warning LNK4098: la biblioteca predeterminada'MSVCRTD' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
   Generando código
-  4 of 576 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+  2 of 578 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     3 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada

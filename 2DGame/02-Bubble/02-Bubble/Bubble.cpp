@@ -21,6 +21,7 @@ void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram,  g
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posBubble.x), float(tileMapDispl.y + posBubble.y)));
 	dir = false;
 	bJumping = false;
+	eliminar = false;
 
 }
 
@@ -101,6 +102,16 @@ glm::ivec2 Bubble::getPosB()
 void Bubble::changeDir()
 {
 	dir = !dir;
+}
+
+void Bubble::tocada()
+{
+	eliminar = true;
+}
+
+bool Bubble::getElimina()
+{
+	return eliminar;
 }
 
 glm::ivec2 Bubble::getSizeB()

@@ -158,7 +158,8 @@ void Scene::update(int deltaTime)
 
 	for (int i = 0; i < 2; i++)
 	{
-		bubbleBig[i]->update(deltaTime);
+		if (!bubbleBig[i]->getElimina())
+			bubbleBig[i]->update(deltaTime);
 	}
 
 	if (creacio)
@@ -175,7 +176,10 @@ void Scene::update(int deltaTime)
 
 	for (int i = 0; i < 2; i++)
 	{
-		posBaux[i] = bubbleBig[i]->getPosB();
+		if (!bubbleBig[i]->getElimina()) {
+			posBaux[i] = bubbleBig[i]->getPosB();
+		}
+		
 		if (!invencible && (posPaux.x < posBaux[i].x + 10 && posPaux.x + 32 > posBaux[i].x + 5) &&
 			(posPaux.y < posBaux[i].y + 10 && posPaux.y + 32 > posBaux[i].y + 5))
 		{
@@ -240,8 +244,8 @@ void Scene::update(int deltaTime)
 		bubbleMid[1]->setPosition(posBaux[0]);
 		bubbleMid[1]->changeDir();
 		bubbleMid[1]->setTileMap(map);
-
-		delete bubbleBig[0];
+		
+		bubbleBig[0]->tocada();
 	}
 
 }
@@ -263,7 +267,8 @@ void Scene::render()
 	
 	for (int i = 0; i < 2; i++)
 	{
-		bubbleBig[i]->render();
+		if (!bubbleBig[i]->getElimina())
+			bubbleBig[i]->render();
 	}
 
 	if (creacio)

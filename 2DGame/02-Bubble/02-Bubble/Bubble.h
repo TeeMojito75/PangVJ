@@ -23,6 +23,10 @@ public:
 	glm::ivec2 getSizeB();
 
 	void changeDir();
+	void tocada();
+
+	bool getElimina();
+	
 
 private:
 	glm::ivec2 tileMapDispl, posBubble, size;
@@ -32,6 +36,7 @@ private:
 	bool dir;
 	int jumpAngle, startY;
 	bool bJumping;
+	bool eliminar;
 };
 
 

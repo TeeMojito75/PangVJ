@@ -38,7 +38,8 @@ private:
 	Hook* hook;
 
 	Bubble* bubbleBig[2];
-	Bubble* bubbleMid[2];
+	Bubble* bubbleMid[4];
+	Bubble* bubbleSmll[8];
 
 	ShaderProgram texProgram;
 	float currentTime;
