@@ -5,20 +5,25 @@
 #include "Game.h"
 
 
-enum HookAnims
-{
-	GO_UP
-};
-
 
 void Hook::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
 {
-	spritesheet.loadFromFile("images/Gancho.png", TEXTURE_PIXEL_FORMAT_RGBA);
-	sprite = Sprite::createSprite(glm::ivec2(9, 189), glm::vec2(0.0416666666f, 0.4643734643734644f), &spritesheet, &shaderProgram);
+	spritesheet.loadFromFile("images/Gancho2.png", TEXTURE_PIXEL_FORMAT_RGBA);
+	sprite = Sprite::createSprite(glm::ivec2(9, 187), glm::vec2(1 / 23.f, 1 / 3.f), &spritesheet, &shaderProgram);
+	highLength = 34;
 	sprite->setNumberAnimations(1);
 
-	sprite->setAnimationSpeed(GO_UP, 8);
-	sprite->addKeyframe(GO_UP, glm::vec2(0.9583333333333334f, 0.5356265356265356f));
+	sprite->setAnimationSpeed(0, 32);
+
+	for (int i = 0; i < 23; i++) {
+		sprite->addKeyframe(0, glm::vec2(i / 23.f, 0.f));
+	}
+	for (int i = 0; i < 23; i++) {
+		sprite->addKeyframe(0, glm::vec2(i / 23.f, 1 / 3.f));
+	}
+	for (int i = 0; i < 23; i++) {
+		sprite->addKeyframe(0, glm::vec2(i / 23.f, 2 / 3.f));
+	}
 
 	sprite->changeAnimation(0);
 	tileMapDispl = tileMapPos;
@@ -28,56 +33,8 @@ void Hook::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram)
 
 void Hook::update(int deltaTime)
 {
-
+	highLength += 1.15;
 	sprite->update(deltaTime);
-
-
-
-	if (Game::instance().getKey(GLFW_KEY_LEFT))
-	{
-		if (sprite->animation() != GO_UP)
-			sprite->changeAnimation(GO_UP);
-		posHook.x -= 2;
-		if (map->collisionMoveLeft(posHook, glm::ivec2(32, 32)))
-		{
-			posHook.x += 2;
-			sprite->changeAnimation(GO_UP);
-		}
-	}
-
-	else if (Game::instance().getKey(GLFW_KEY_RIGHT))
-	{
-		if (sprite->animation() != GO_UP)
-			sprite->changeAnimation(GO_UP);
-		posHook.x += 2;
-		if (map->collisionMoveRight(posHook, glm::ivec2(32, 32)))
-		{
-			posHook.x -= 2;
-			sprite->changeAnimation(GO_UP);
-		}
-	}
-
-
-
-
-	else
-	{
-		if (sprite->animation() == GO_UP)
-			sprite->changeAnimation(GO_UP);
-
-		else if (sprite->animation() == GO_UP)
-			sprite->changeAnimation(GO_UP);
-
-		else if (sprite->animation() == GO_UP && map->collisionStairs(posHook, glm::ivec2(32, 32)))
-			sprite->changeAnimation(GO_UP);
-
-		else if (sprite->animation() == GO_UP && !map->collisionStairs(posHook, glm::ivec2(32, 32)))
-			sprite->changeAnimation(GO_UP);
-		else if (sprite->animation() == GO_UP && map->collisionMoveDown(posHook, glm::ivec2(32, 32), &posHook.y))
-			sprite->changeAnimation(GO_UP);
-	}
-
-
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posHook.x), float(tileMapDispl.y + posHook.y)));
 }
 
@@ -97,6 +54,12 @@ void Hook::setPosition(const glm::vec2& pos)
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posHook.x), float(tileMapDispl.y + posHook.y)));
 }
 
+glm::ivec2 Hook::getPosHook()
+{
+	return posHook;
+}
 
-
-
+float Hook::getHighLength()
+{
+	return highLength;
+}
