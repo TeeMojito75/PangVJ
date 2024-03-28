@@ -76,6 +76,7 @@ void Scene::init(const int& numLevel, int videsRest)
 
 	if (restart)
 	{
+		
 		if (write) 
 		{
 			gameO[0].init("fonts/DroidSerif.ttf");
@@ -516,6 +517,9 @@ void Scene::update(int deltaTime)
 	{
 		over = true;
 		restart = false;
+		hook = NULL;
+		food = NULL;
+		power = NULL;
 		write = true;
 		Scene::init(auxLvl, vides);
 	}
@@ -526,6 +530,9 @@ void Scene::update(int deltaTime)
 		{
 			write = true;
 			restart = true;
+			hook = NULL;
+			food = NULL;
+			power = NULL;
 			temps = 91.f;
 			vides -= 1;
 			Scene::init(auxLvl, vides);
@@ -535,6 +542,10 @@ void Scene::update(int deltaTime)
 	if (restart)
 	{
 		write = true;
+		hook = NULL;
+		food = NULL;
+		power = NULL;
+		puntuacio = 0;
 		Scene::init(auxLvl, vides);
 	}
 
@@ -752,6 +763,9 @@ void Scene::update(int deltaTime)
 	{
 		victoria = true;
 		restart = false;
+		hook = NULL;
+		food = NULL;
+		power = NULL;
 		write = true;
 		engine->drop();
 		SoundManager::instance().init();
@@ -799,14 +813,14 @@ void Scene::render()
 	background->render();
 	map->render();
 	player->render();
-	if (food != NULL) food->render();
-	if (power != NULL) power->render();
-	if (hook != NULL) hook->render();
+	if (food != NULL && !restart && !over && !victoria) food->render();
+	if (power != NULL && !restart && !over && !victoria) power->render();
+	if (hook != NULL && !restart && !over && !victoria) hook->render();
 	
 	
 	for (int i = 0; i < 2; i++)
 	{
-		if (!bubbleBig[i]->getElimina())
+		if (!bubbleBig[i]->getElimina() && !restart && !over && !victoria)
 				bubbleBig[i]->render();
 	}
 	
@@ -903,12 +917,12 @@ void Scene::render()
 
 	if (victoria)
 	{
-		gameO[0].render("Stage Complete!!!", glm::vec2(SCREEN_WIDTH / 2 + 130, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
+		gameO[0].render("Stage Complete!!!", glm::vec2(SCREEN_WIDTH / 2 + 120, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
 		
 		if(auxLvl == 1 || auxLvl == 2)
 			gameO[1].render("Press " + to_string(auxLvl+1) + " To Continue", glm::vec2(SCREEN_WIDTH / 2 + 70, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
 		else 
-			gameO[1].render("Congrats!!! Press Esc to restart", glm::vec2(SCREEN_WIDTH / 2 + 70, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
+			gameO[1].render("Congrats!!! Press Esc to restart", glm::vec2(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 200), 64, glm::vec4(0, 0, 0, 1));
 	}
 
 }

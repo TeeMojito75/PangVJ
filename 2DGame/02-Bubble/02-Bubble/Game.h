@@ -50,7 +50,7 @@ private:
 	Levels* levels;
 	Scene* scene;
 	int numLevel, posIndex, view;
-	bool start, map, songPlaying;
+	bool start, map, songPlaying, escena;
 	bool bPlay; // Continue to play game?
 	bool keys[GLFW_KEY_LAST+1]; // Store key states so that 
 							    // we can have access at any time

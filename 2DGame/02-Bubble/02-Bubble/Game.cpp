@@ -10,7 +10,7 @@ void Game::init()
 	irrklang::ISound* sound = engine->play2D("sounds/MenuTheme.wav", true, false, true);
 	sound->setVolume(0.6f);
 
-	bPlay = true, start = false, map = true, songPlaying = false;
+	bPlay = true, start = false, map = true, songPlaying = false, escena = false;
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	numLevel = 1, view = 0, posIndex = 0;
 
@@ -58,6 +58,11 @@ void Game::keyPressed(int key)
 			bPlay = false;
 		}
 		else {
+			if (escena)
+			{
+				scene->~Scene();
+				escena = false;
+			}
 			engine->drop();
 			Game::init();
 		}
@@ -99,6 +104,7 @@ void Game::keyPressed(int key)
 		engine->drop();
 		numLevel = levels->getPos() + 1;
 		map = false;
+		escena = true;
 		scene = new Scene();
 		scene->init(numLevel, 3);
 	}
