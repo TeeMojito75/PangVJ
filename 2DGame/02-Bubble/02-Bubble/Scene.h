@@ -12,6 +12,7 @@
 #include "Power.h"
 #include "Food.h"
 #include <irrKlang.h>
+#include <stdlib.h>
 using namespace irrklang;
 
 // Scene contains all the entities of our game.
@@ -56,6 +57,7 @@ private:
 	Text gameO[2];
 
 	int puntuacio;
+	int puntsGuardats;
 	int vides;
 	float temps; 
 

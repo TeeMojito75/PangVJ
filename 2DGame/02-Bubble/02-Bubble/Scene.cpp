@@ -130,7 +130,6 @@ void Scene::init(const int& numLevel, int videsRest)
 	food->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 0);
 	food->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
 	food->setTileMap(map);
-	
 
 	//Reset bolles petites si s'ha mort
 	if (petarB1) {
@@ -763,6 +762,9 @@ void Scene::update(int deltaTime)
 	{
 		victoria = true;
 		restart = false;
+		puntsGuardats = puntuacio;
+		puntuacio = 0;
+		over = false;
 		hook = NULL;
 		food = NULL;
 		power = NULL;
@@ -772,7 +774,7 @@ void Scene::update(int deltaTime)
 		engine = SoundManager::instance().getSoundEngine();
 		irrklang::ISound* sound = engine->play2D("sounds/StageCleared.wav", false, false, true);
 		sound->setVolume(0.5f);
-		Scene::init(auxLvl, vides);
+		Scene::init(auxLvl, 0);
 	}
 }
 
@@ -881,7 +883,10 @@ void Scene::render()
 		}
 	}
 
-	text[0].render("Puntuacio: " + to_string(puntuacio), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
+	
+	text[0].render("Puntuacio: " + to_string(puntuacio + puntsGuardats), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
+	
+	
 	if (vides >= 0) text[1].render("Vides: " + to_string(vides), glm::vec2(130, 840), 48, glm::vec4(1, 1, 1, 1));
 	if (temps > 0.f) text[2].render("Temps: " + to_string(int(temps)), glm::vec2(1050, 780), 48, glm::vec4(1, 1, 1, 1));
 
