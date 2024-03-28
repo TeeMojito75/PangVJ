@@ -235,8 +235,7 @@ bool TileMap::collisionRoof(const glm::ivec2& pos, const glm::ivec2& size) const
 	for (int x = x0; x <= x1; x++)
 	{
 		if (map[y * mapSize.x + x] != 0
-			&& map[y * mapSize.x + x] != 17 && map[y * mapSize.x + x] != 18 && map[y * mapSize.x + x] != 19
-			&& map[y * mapSize.x + x] != 12 && map[y * mapSize.x + x] != 13 && map[y * mapSize.x + x] != 14)
+			&& map[y * mapSize.x + x] != 17 && map[y * mapSize.x + x] != 18 && map[y * mapSize.x + x] != 19)
 		{
 			return true;
 		}

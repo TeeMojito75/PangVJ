@@ -8,7 +8,7 @@ void Game::init()
 	SoundManager::instance().init();
 	engine = SoundManager::instance().getSoundEngine();
 	irrklang::ISound* sound = engine->play2D("sounds/MenuTheme.wav", true, false, true);
-	sound->setVolume(0.3f);
+	sound->setVolume(0.6f);
 
 	bPlay = true, start = false, map = true, songPlaying = false;
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);

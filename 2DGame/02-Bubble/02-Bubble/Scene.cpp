@@ -124,19 +124,19 @@ void Scene::init(const int& numLevel, int videsRest)
 	if (numLevel == 1 && music)
 	{
 		irrklang::ISound* sound = engine->play2D("sounds/Stage1.wav", true, false, true);
-		sound->setVolume(0.05f);
+		sound->setVolume(0.4f);
 		music = false;
 	}
 	else if (numLevel == 2 && music)
 	{
 		irrklang::ISound* sound = engine->play2D("sounds/Stage2.wav", true, false, true);
-		sound->setVolume(0.05f);
+		sound->setVolume(0.4f);
 		music = false;
 	}
 	else if (numLevel == 3 && music)
 	{
 		irrklang::ISound* sound = engine->play2D("sounds/Stage3.wav", true, false, true);
-		sound->setVolume(0.05f);
+		sound->setVolume(0.4f);
 		music = false;
 	}
 
@@ -226,6 +226,7 @@ void Scene::update(int deltaTime)
 		Scene::init(auxLvl, vides);
 	}
 
+	/*
 	if (Game::instance().getKey(GLFW_KEY_D))
 	{
 		creacio = true;
@@ -242,6 +243,7 @@ void Scene::update(int deltaTime)
 		
 		bubbleBig[0]->tocada();
 	}
+	*/
 	if (Game::instance().getKey(GLFW_KEY_S) && hook == NULL) {
 		hook = new Hook();
 		hook->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
@@ -256,6 +258,20 @@ void Scene::update(int deltaTime)
 	if (hook != NULL && circleRect(bubbleBig[0]->getPosB().x + 16, bubbleBig[0]->getPosB().y + 16, 16, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength())) {
 		delete hook;
 		hook = NULL;
+		puntuacio += 200;
+		creacio = true;
+		bubbleMid[0] = new Bubble();
+		bubbleMid[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
+		bubbleMid[0]->setPosition(posBaux[0]);
+		bubbleMid[0]->setTileMap(map);
+
+		bubbleMid[1] = new Bubble();
+		bubbleMid[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
+		bubbleMid[1]->setPosition(posBaux[0]);
+		bubbleMid[1]->changeDir();
+		bubbleMid[1]->setTileMap(map);
+
+		bubbleBig[0]->tocada();
 	}
 }
 
