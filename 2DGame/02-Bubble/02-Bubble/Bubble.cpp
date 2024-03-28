@@ -30,18 +30,18 @@ void Bubble::update(int deltaTime)
 	sprite->update(deltaTime);
 	
 		if (dir == false)
-		posBubble.x -= 1.2;
+		posBubble.x -= 2;
 		if (map->collisionMoveLeft(posBubble, size))
 		{
-			posBubble.x += 1.2;
+			posBubble.x += 2;
 			dir = !dir;
 		}
 	
 		if (dir == true)
-		posBubble.x += 1.2;
+		posBubble.x += 2;
 		if (map->collisionMoveRight(posBubble, size))
 		{
-			posBubble.x -= 1.2;
+			posBubble.x -= 2;
 			dir = !dir;
 		}
 
