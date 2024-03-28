@@ -10,6 +10,7 @@
 #include "Text.h"
 #include "Hook.h"
 #include <irrKlang.h>
+#include <set>
 using namespace irrklang;
 
 // Scene contains all the entities of our game.
@@ -35,10 +36,14 @@ private:
 	TileMap *map;
 	Player *player;
 	Hook* hook;
+<<<<<<< Updated upstream
 
 	Bubble* bubbleBig[2];
 	Bubble* bubbleMid[2];
 
+=======
+	Bubble* bubble[10];
+>>>>>>> Stashed changes
 	ShaderProgram texProgram;
 	float currentTime;
 	glm::mat4 projection;

@@ -9,8 +9,12 @@
 #define FALL_STEP 2
 
 
+<<<<<<< Updated upstream
 
 void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, glm::ivec2 sizeB)
+=======
+void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, const glm::ivec2 sizeB)
+>>>>>>> Stashed changes
 {
 	spritesheet.loadFromFile("images/Boles.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	sprite = Sprite::createSprite(sizeB, glm::vec2(0.46, 0.33), &spritesheet, &shaderProgram);
@@ -95,7 +99,19 @@ glm::ivec2 Bubble::getPosB()
 	return posBubble;
 }
 
+<<<<<<< Updated upstream
 void Bubble::changeDir()
 {
 	dir = !dir;
 }
+=======
+glm::ivec2 Bubble::getSizeB()
+{
+	return size;
+}
+
+void Bubble::changeDir()
+{
+	dir = !dir;
+}
+>>>>>>> Stashed changes
