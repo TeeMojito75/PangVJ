@@ -33,15 +33,24 @@ Scene::Scene()
 	over = false;
 	write = false;
 	music = true;
+	victoria = false;
 	auxLvl = 1;
 
-	invencible = false;
+	invencible = true;
 	petarB1 = false;
 	petarB2 = false;
 	petarM1 = false;
 	petarM2 = false;
 	petarM3 = false;
 	petarM4 = false;
+	petarS1 = false;
+	petarS2 = false;
+	petarS3 = false;
+	petarS4 = false;
+	petarS5 = false;
+	petarS6 = false;
+	petarS7 = false;
+	petarS8 = false;
 	SoundManager::instance().init();
 	engine = SoundManager::instance().getSoundEngine();
 }
@@ -91,6 +100,16 @@ void Scene::init(const int& numLevel, int videsRest)
 		}
 		
 	}
+
+	else if (victoria)
+	{
+		if (write)
+		{
+			gameO[0].init("fonts/DroidSerif.ttf");
+			gameO[1].init("fonts/DroidSerif.ttf");
+			write = false;
+		}
+	}
 	
 	initShaders();
 
@@ -104,13 +123,13 @@ void Scene::init(const int& numLevel, int videsRest)
 	player->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
 	player->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), INIT_PLAYER_Y_TILES * map->getTileSize()));
 	player->setTileMap(map);
+	hit = false;
 
 	food = new Food();
 	food->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 0);
 	food->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
 	food->setTileMap(map);
-
-	hit = false;
+	
 
 	//Reset bolles petites si s'ha mort
 	if (petarB1) {
@@ -127,21 +146,29 @@ void Scene::init(const int& numLevel, int videsRest)
 		bubbleSmll[0] = NULL;
 		bubbleSmll[1] = NULL;
 		petarM1 = false;
+		petarS1 = false;
+		petarS2 = false;
 	}
 	if (petarM2) {
 		bubbleSmll[2] = NULL;
 		bubbleSmll[3] = NULL;
 		petarM2 = false;
+		petarS3 = false;
+		petarS4 = false;
 	}
 	if (petarM3) {
 		bubbleSmll[4] = NULL;
 		bubbleSmll[5] = NULL;
 		petarM3 = false;
+		petarS5 = false;
+		petarS6 = false;
 	}
 	if (petarM4) {
 		bubbleSmll[6] = NULL;
 		bubbleSmll[7] = NULL;
 		petarM4 = false;
+		petarS7 = false;
+		petarS8 = false;
 	}
 
 	bubbleBig[0] = new Bubble();
@@ -159,7 +186,7 @@ void Scene::init(const int& numLevel, int videsRest)
 			cout << "Could not load font!!!" << endl;
 	}
 
-	if (!over)
+	if (!over || !victoria)
 	{
 		if (!gameO[0].init("fonts/DroidSerif.ttf") || !gameO[1].init("fonts/DroidSerif.ttf"))
 			cout << "Could not load font!!!" << endl;
@@ -648,6 +675,91 @@ void Scene::update(int deltaTime)
 		bubbleMid[3]->tocada();
 	}
 
+	if (!petarS1 && petarM1 && hook != NULL && circleRect(bubbleSmll[0]->getPosB().x + 4, bubbleSmll[0]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	{
+		delete hook;
+		hook = NULL;
+		puntuacio += 800;
+		petarS1 = true;
+		bubbleSmll[0]->tocada();
+	}
+
+	if (!petarS2 && petarM1 && hook != NULL && circleRect(bubbleSmll[1]->getPosB().x + 4, bubbleSmll[1]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	{
+		delete hook;
+		hook = NULL;
+		puntuacio += 800;
+		petarS2 = true;
+		bubbleSmll[1]->tocada();
+	}
+
+	if (!petarS3 && petarM2 && hook != NULL && circleRect(bubbleSmll[2]->getPosB().x + 4, bubbleSmll[2]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	{
+		delete hook;
+		hook = NULL;
+		puntuacio += 800;
+		petarS3 = true;
+		bubbleSmll[2]->tocada();
+	}
+
+	if (!petarS4 && petarM2 && hook != NULL && circleRect(bubbleSmll[3]->getPosB().x + 4, bubbleSmll[3]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	{
+		delete hook;
+		hook = NULL;
+		puntuacio += 800;
+		petarS4 = true;
+		bubbleSmll[3]->tocada();
+	}
+
+	if (!petarS5 && petarM3 && hook != NULL && circleRect(bubbleSmll[4]->getPosB().x + 4, bubbleSmll[4]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	{
+		delete hook;
+		hook = NULL;
+		puntuacio += 800;
+		petarS5 = true;
+		bubbleSmll[4]->tocada();
+	}
+
+	if (!petarS6 && petarM3 && hook != NULL && circleRect(bubbleSmll[5]->getPosB().x + 4, bubbleSmll[5]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	{
+		delete hook;
+		hook = NULL;
+		puntuacio += 800;
+		petarS6 = true;
+		bubbleSmll[5]->tocada();
+	}
+
+	if (!petarS7 && petarM4 && hook != NULL && circleRect(bubbleSmll[6]->getPosB().x + 4, bubbleSmll[6]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	{
+		delete hook;
+		hook = NULL;
+		puntuacio += 800;
+		petarS7 = true;
+		bubbleSmll[6]->tocada();
+	}
+
+	if (!petarS8 && petarM4 && hook != NULL && circleRect(bubbleSmll[7]->getPosB().x + 4, bubbleSmll[7]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	{
+		delete hook;
+		hook = NULL;
+		puntuacio += 800;
+		petarS8 = true;
+		bubbleSmll[7]->tocada();
+	}
+
+	if (petarB1 && petarB2 && petarM1 && petarM2 && petarM3 && petarM4 && petarS1 && petarS2 && petarS3
+		&& petarS4 && petarS5 && petarS6 && petarS7 && petarS8)
+	{
+		victoria = true;
+		restart = false;
+		write = true;
+		engine->drop();
+		SoundManager::instance().init();
+		engine = SoundManager::instance().getSoundEngine();
+		irrklang::ISound* sound = engine->play2D("sounds/StageCleared.wav", false, false, true);
+		sound->setVolume(0.5f);
+		Scene::init(auxLvl, vides);
+	}
 }
 
 bool Scene::circleRect(float cx, float cy, float radius, float rx, float ry, float rw, float rh) {
@@ -787,6 +899,16 @@ void Scene::render()
 	{
 		gameO[0].render("GAME OVER!!!", glm::vec2(SCREEN_WIDTH / 2 + 130, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
 		gameO[1].render("Press Esc To Exit", glm::vec2(SCREEN_WIDTH / 2 + 90, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
+	}
+
+	if (victoria)
+	{
+		gameO[0].render("Stage Complete!!!", glm::vec2(SCREEN_WIDTH / 2 + 130, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
+		
+		if(auxLvl == 1 || auxLvl == 2)
+			gameO[1].render("Press " + to_string(auxLvl+1) + " To Continue", glm::vec2(SCREEN_WIDTH / 2 + 70, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
+		else 
+			gameO[1].render("Congrats!!! Press Esc to restart", glm::vec2(SCREEN_WIDTH / 2 + 70, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
 	}
 
 }

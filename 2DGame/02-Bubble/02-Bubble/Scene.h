@@ -12,7 +12,6 @@
 #include "Power.h"
 #include "Food.h"
 #include <irrKlang.h>
-#include <set>
 using namespace irrklang;
 
 // Scene contains all the entities of our game.
@@ -63,6 +62,7 @@ private:
 	bool hit;
 	bool restart;
 	bool over;
+	bool victoria;
 	bool write;
 	bool music;
 
@@ -74,6 +74,14 @@ private:
 	bool petarM2;
 	bool petarM3;
 	bool petarM4;
+	bool petarS1;
+	bool petarS2;
+	bool petarS3;
+	bool petarS4;
+	bool petarS5;
+	bool petarS6;
+	bool petarS7;
+	bool petarS8;
 
 	glm::ivec2 posPaux;
 	glm::ivec2 posBaux[14];
