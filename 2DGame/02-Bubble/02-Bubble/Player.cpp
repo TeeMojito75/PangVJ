@@ -51,13 +51,22 @@ void Player::init(const glm::ivec2 &tileMapPos, ShaderProgram &shaderProgram)
 	sprite->changeAnimation(0);
 	tileMapDispl = tileMapPos;
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y)));
-	
+
+	spritesheet2.loadFromFile("images/invencible.png", TEXTURE_PIXEL_FORMAT_RGBA);
+	sprite2 = Sprite::createSprite(glm::ivec2(32, 40), glm::vec2(0.5, 1), &spritesheet2, &shaderProgram);
+	sprite2->setNumberAnimations(1);
+	sprite2->setAnimationSpeed(0, 16);
+	sprite2->addKeyframe(0, glm::vec2(0.f, 0.f));
+	sprite2->addKeyframe(0, glm::vec2(0.5f, 0.f));
+	sprite2->changeAnimation(0);
+	sprite2->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y-4)));
 }
 
 void Player::update(int deltaTime)
 {
 
 	sprite->update(deltaTime);
+	sprite2->update(deltaTime);
 
 	if (!map->collisionMoveDown(posPlayer, glm::ivec2(32, 32), &posPlayer.y)
 		&& !map->collisionStairs(posPlayer, glm::ivec2(32, 32)))
@@ -136,10 +145,12 @@ void Player::update(int deltaTime)
 	
 
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y)));
+	sprite2->setPosition(glm::vec2(float(tileMapDispl.x + posPlayer.x), float(tileMapDispl.y + posPlayer.y-4)));
 }
 
-void Player::render()
+void Player::render(bool inv)
 {
+	if (inv) sprite2->render();
 	sprite->render();
 }
 

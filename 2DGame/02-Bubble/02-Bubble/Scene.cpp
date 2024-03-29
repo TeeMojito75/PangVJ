@@ -972,7 +972,7 @@ void Scene::render()
 	texProgram.setUniform2f("texCoordDispl", 0.f, 0.f);
 	background->render();
 	map->render();
-	player->render();
+	player->render(invencible);
 	if (food[0] != NULL && !restart && !over && !victoria) food[0]->render();
 	if (food[1] != NULL && !restart && !over && !victoria) food[1]->render();
 	if (food[2] != NULL && !restart && !over && !victoria) food[2]->render();
