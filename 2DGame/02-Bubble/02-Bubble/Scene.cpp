@@ -201,12 +201,10 @@ void Scene::init(const int& numLevel, int videsRest)
 	}
 
 	bubbleBig[0] = new Bubble();
-	bubbleBig[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
-	bubbleBig[0]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
+	bubbleBig[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32), glm::vec2(22 * map->getTileSize(), 5 * map->getTileSize()));
 	bubbleBig[0]->setTileMap(map);
 	bubbleBig[1] = new Bubble();
-	bubbleBig[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32));
-	bubbleBig[1]->setPosition(glm::vec2(22 * map->getTileSize(), 2 * map->getTileSize()));
+	bubbleBig[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(32, 32), glm::vec2(22 * map->getTileSize(), 5 * map->getTileSize()));
 	bubbleBig[1]->changeDir();
 	bubbleBig[1]->setTileMap(map);
 
@@ -701,13 +699,11 @@ void Scene::update(int deltaTime)
 
 		petarB1 = true;
 		bubbleMid[0] = new Bubble();
-		bubbleMid[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
-		bubbleMid[0]->setPosition(posBaux[0]);
+		bubbleMid[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16), posBaux[0]);
 		bubbleMid[0]->setTileMap(map);
 
 		bubbleMid[1] = new Bubble();
-		bubbleMid[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
-		bubbleMid[1]->setPosition(posBaux[0]);
+		bubbleMid[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16), posBaux[0]);
 		bubbleMid[1]->changeDir();
 		bubbleMid[1]->setTileMap(map);
 
@@ -720,13 +716,11 @@ void Scene::update(int deltaTime)
 		puntuacio += 200;
 		petarB2 = true;
 		bubbleMid[2] = new Bubble();
-		bubbleMid[2]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
-		bubbleMid[2]->setPosition(posBaux[1]);
+		bubbleMid[2]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16), posBaux[1]);
 		bubbleMid[2]->setTileMap(map);
 
 		bubbleMid[3] = new Bubble();
-		bubbleMid[3]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16));
-		bubbleMid[3]->setPosition(posBaux[1]);
+		bubbleMid[3]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(16, 16), posBaux[1]);
 		bubbleMid[3]->changeDir();
 		bubbleMid[3]->setTileMap(map);
 
@@ -740,13 +734,11 @@ void Scene::update(int deltaTime)
 		puntuacio += 400;
 		petarM1 = true;
 		bubbleSmll[0] = new Bubble();
-		bubbleSmll[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8));
-		bubbleSmll[0]->setPosition(posBaux[2]);
+		bubbleSmll[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8), posBaux[2]);
 		bubbleSmll[0]->setTileMap(map);
 
 		bubbleSmll[1] = new Bubble();
-		bubbleSmll[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8));
-		bubbleSmll[1]->setPosition(posBaux[2]);
+		bubbleSmll[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8), posBaux[2]);
 		bubbleSmll[1]->changeDir();
 		bubbleSmll[1]->setTileMap(map);
 
@@ -760,13 +752,11 @@ void Scene::update(int deltaTime)
 		puntuacio += 400;
 		petarM2 = true;
 		bubbleSmll[2] = new Bubble();
-		bubbleSmll[2]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8));
-		bubbleSmll[2]->setPosition(posBaux[3]);
+		bubbleSmll[2]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8), posBaux[3]);
 		bubbleSmll[2]->setTileMap(map);
 
 		bubbleSmll[3] = new Bubble();
-		bubbleSmll[3]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8));
-		bubbleSmll[3]->setPosition(posBaux[3]);
+		bubbleSmll[3]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8), posBaux[3]);
 		bubbleSmll[3]->changeDir();
 		bubbleSmll[3]->setTileMap(map);
 
@@ -785,13 +775,11 @@ void Scene::update(int deltaTime)
 		puntuacio += 400;
 		petarM3 = true;
 		bubbleSmll[4] = new Bubble();
-		bubbleSmll[4]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8));
-		bubbleSmll[4]->setPosition(posBaux[4]);
+		bubbleSmll[4]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8), posBaux[4]);
 		bubbleSmll[4]->setTileMap(map);
 
 		bubbleSmll[5] = new Bubble();
-		bubbleSmll[5]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8));
-		bubbleSmll[5]->setPosition(posBaux[4]);
+		bubbleSmll[5]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8), posBaux[4]);
 		bubbleSmll[5]->changeDir();
 		bubbleSmll[5]->setTileMap(map);
 
@@ -805,13 +793,11 @@ void Scene::update(int deltaTime)
 		puntuacio += 400;
 		petarM4 = true;
 		bubbleSmll[6] = new Bubble();
-		bubbleSmll[6]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8));
-		bubbleSmll[6]->setPosition(posBaux[5]);
+		bubbleSmll[6]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8), posBaux[5]);
 		bubbleSmll[6]->setTileMap(map);
 
 		bubbleSmll[7] = new Bubble();
-		bubbleSmll[7]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8));
-		bubbleSmll[7]->setPosition(posBaux[5]);
+		bubbleSmll[7]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, glm::ivec2(8, 8), posBaux[5]);
 		bubbleSmll[7]->changeDir();
 		bubbleSmll[7]->setTileMap(map);
 

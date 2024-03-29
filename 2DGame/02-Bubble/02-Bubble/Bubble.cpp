@@ -6,23 +6,28 @@
 
 #define JUMP_ANGLE_STEP 3
 #define JUMP_HEIGHT 86
-#define FALL_STEP 2
+#define FALL_STEP 4
 
 
 
 
 
-void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram,  glm::ivec2 sizeB)
+void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram,  glm::ivec2 sizeB, glm::ivec2 posIni)
 {
 	spritesheet.loadFromFile("images/Boles.png", TEXTURE_PIXEL_FORMAT_RGBA);
 	sprite = Sprite::createSprite(sizeB, glm::vec2(0.46, 0.33), &spritesheet, &shaderProgram);
 	size = sizeB;
 	tileMapDispl = tileMapPos;
+	posBubble = posIni;
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posBubble.x), float(tileMapDispl.y + posBubble.y)));
 	dir = false;
-	bJumping = false;
 	eliminar = false;
-
+	
+	bJumping = true;
+	jumpAngle = 45;
+	cout << posIni.y << endl;
+	startY = posIni.y + int(86 * sin(3.14159f * jumpAngle / 180.f));
+	
 }
 
 void Bubble::update(int deltaTime, bool slow)
