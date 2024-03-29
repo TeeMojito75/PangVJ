@@ -48,6 +48,8 @@ Scene::Scene()
 	slow = false;
 	stop = false;
 
+	godmode = false;
+
 	petarB1 = false;
 	petarB2 = false;
 	petarM1 = false;
@@ -82,12 +84,14 @@ Scene::~Scene()
 		delete power;
 	if (power[2] != NULL)
 		delete power;
+	/*
 	if (food[0] != NULL)
 		delete food;
-	if (food[0] != NULL)
+	if (food[1] != NULL)
 		delete food;
-	if (food[0] != NULL)
+	if (food[2] != NULL)
 		delete food;
+		*/
 	if (background != NULL)
 		delete background;
 	if (engine != NULL)
@@ -323,7 +327,7 @@ void Scene::update(int deltaTime)
 		if (!bubbleBig[i]->getElimina()) {
 			posBaux[i] = bubbleBig[i]->getPosB();
 
-			if (!invencible && (posPaux.x < posBaux[i].x + 10 && posPaux.x + 32 > posBaux[i].x + 5) &&
+			if (!godmode && !invencible && (posPaux.x < posBaux[i].x + 10 && posPaux.x + 32 > posBaux[i].x + 5) &&
 				(posPaux.y < posBaux[i].y + 10 && posPaux.y + 32 > posBaux[i].y + 5))
 			{
 				if (!hit && vides >= 0)
@@ -355,7 +359,7 @@ void Scene::update(int deltaTime)
 			if (!bubbleMid[i]->getElimina()) {
 				posBaux[i+2] = bubbleMid[i]->getPosB();
 
-				if (!invencible && (posPaux.x < posBaux[i+2].x + 10 && posPaux.x + 32 > posBaux[i+2].x + 5) &&
+				if (!godmode && !invencible && (posPaux.x < posBaux[i+2].x + 10 && posPaux.x + 32 > posBaux[i+2].x + 5) &&
 					(posPaux.y < posBaux[i+2].y + 10 && posPaux.y + 32 > posBaux[i+2].y + 5))
 				{
 					if (!hit && vides >= 0)
@@ -389,7 +393,7 @@ void Scene::update(int deltaTime)
 			if (!bubbleMid[i]->getElimina()) {
 				posBaux[i + 2] = bubbleMid[i]->getPosB();
 
-				if (!invencible && (posPaux.x < posBaux[i+2].x + 10 && posPaux.x + 32 > posBaux[i+2].x + 5) &&
+				if (!godmode && !invencible && (posPaux.x < posBaux[i+2].x + 10 && posPaux.x + 32 > posBaux[i+2].x + 5) &&
 					(posPaux.y < posBaux[i+2].y + 10 && posPaux.y + 32 > posBaux[i+2].y + 5))
 				{
 					if (!hit && vides >= 0)
@@ -422,7 +426,7 @@ void Scene::update(int deltaTime)
 			if (!bubbleSmll[i]->getElimina()) {
 				posBaux[i + 6] = bubbleSmll[i]->getPosB();
 
-				if (!invencible && (posPaux.x < posBaux[i + 6].x && posPaux.x + 32 > posBaux[i + 6].x) &&
+				if (!godmode && !invencible && (posPaux.x < posBaux[i + 6].x && posPaux.x + 32 > posBaux[i + 6].x) &&
 					(posPaux.y < posBaux[i + 6].y && posPaux.y + 32 > posBaux[i + 6].y))
 				{
 					if (!hit && vides >= 0)
@@ -454,7 +458,7 @@ void Scene::update(int deltaTime)
 			if (!bubbleSmll[i]->getElimina()) {
 				posBaux[i + 6] = bubbleSmll[i]->getPosB();
 
-				if (!invencible && (posPaux.x < posBaux[i + 6].x && posPaux.x + 32 > posBaux[i + 6].x) &&
+				if (!godmode && !invencible && (posPaux.x < posBaux[i + 6].x && posPaux.x + 32 > posBaux[i + 6].x) &&
 					(posPaux.y < posBaux[i + 6].y && posPaux.y + 32 > posBaux[i + 6].y))
 				{
 					if (!hit && vides >= 0)
@@ -486,7 +490,7 @@ void Scene::update(int deltaTime)
 			if (!bubbleSmll[i]->getElimina()) {
 				posBaux[i + 6] = bubbleSmll[i]->getPosB();
 
-				if (!invencible && (posPaux.x < posBaux[i + 6].x + 10 && posPaux.x + 32 > posBaux[i + 6].x + 5) &&
+				if (!godmode && !invencible && (posPaux.x < posBaux[i + 6].x + 10 && posPaux.x + 32 > posBaux[i + 6].x + 5) &&
 					(posPaux.y < posBaux[i + 6].y + 10 && posPaux.y + 32 > posBaux[i + 6].y + 5))
 				{
 					if (!hit && vides >= 0)
@@ -518,7 +522,7 @@ void Scene::update(int deltaTime)
 			if (!bubbleSmll[i]->getElimina()) {
 				posBaux[i + 6] = bubbleSmll[i]->getPosB();
 
-				if (!invencible && (posPaux.x < posBaux[i + 6].x + 10 && posPaux.x + 32 > posBaux[i + 6].x + 5) &&
+				if (!godmode && !invencible && (posPaux.x < posBaux[i + 6].x + 10 && posPaux.x + 32 > posBaux[i + 6].x + 5) &&
 					(posPaux.y < posBaux[i + 6].y + 10 && posPaux.y + 32 > posBaux[i + 6].y + 5))
 				{
 					if (!hit && vides >= 0)
@@ -558,6 +562,9 @@ void Scene::update(int deltaTime)
 		food[0] = NULL;
 		food[1] = NULL;
 		food[2] = NULL;
+		slow = false;
+		invencible = false;
+		stop = false;
 		write = true;
 		Scene::init(auxLvl, vides);
 	}
@@ -576,6 +583,9 @@ void Scene::update(int deltaTime)
 			food[0] = NULL;
 			food[1] = NULL;
 			food[2] = NULL;
+			slow = false;
+			invencible = false;
+			stop = false;
 			temps = 91.f;
 			vides -= 1;
 			Scene::init(auxLvl, vides);
@@ -593,6 +603,9 @@ void Scene::update(int deltaTime)
 		food[0] = NULL;
 		food[1] = NULL;
 		food[2] = NULL;
+		slow = false;
+		invencible = false;
+		stop = false;
 		puntuacio = 0;
 		Scene::init(auxLvl, vides);
 	}
@@ -739,6 +752,11 @@ void Scene::update(int deltaTime)
 		bubbleSmll[3]->changeDir();
 		bubbleSmll[3]->setTileMap(map);
 
+		power[1] = new Power();
+		power[1]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 1);
+		power[1]->setPosition(bubbleMid[1]->getPosB());
+		power[1]->setTileMap(map);
+
 		bubbleMid[1]->tocada();
 	}
 
@@ -778,6 +796,11 @@ void Scene::update(int deltaTime)
 		bubbleSmll[7]->setPosition(posBaux[5]);
 		bubbleSmll[7]->changeDir();
 		bubbleSmll[7]->setTileMap(map);
+
+		power[2] = new Power();
+		power[2]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 2);
+		power[2]->setPosition(bubbleMid[3]->getPosB());
+		power[2]->setTileMap(map);
 
 		bubbleMid[3]->tocada();
 	}
@@ -859,7 +882,6 @@ void Scene::update(int deltaTime)
 	{
 		victoria = true;
 		restart = false;
-		puntsGuardats = puntuacio;
 		puntuacio = 0;
 		over = false;
 		hook[0] = NULL;
@@ -870,6 +892,9 @@ void Scene::update(int deltaTime)
 		food[0] = NULL;
 		food[1] = NULL;
 		food[2] = NULL;
+		slow = false;
+		invencible = false;
+		stop = false;
 		write = true;
 		engine->drop();
 		SoundManager::instance().init();
@@ -877,6 +902,12 @@ void Scene::update(int deltaTime)
 		irrklang::ISound* sound = engine->play2D("sounds/StageCleared.wav", false, false, true);
 		sound->setVolume(0.5f);
 		Scene::init(auxLvl, 0);
+	}
+
+	//Godmode
+	if (Game::instance().getKey(GLFW_KEY_G))
+	{
+		godmode = !godmode;
 	}
 }
 
@@ -991,7 +1022,7 @@ void Scene::render()
 	}
 
 	
-	text[0].render("Puntuacio: " + to_string(puntuacio + puntsGuardats), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
+	text[0].render("Puntuacio: " + to_string(puntuacio), glm::vec2(20, 780), 48, glm::vec4(1, 1, 1, 1));
 	
 	
 	if (vides >= 0) text[1].render("Vides: " + to_string(vides), glm::vec2(130, 840), 48, glm::vec4(1, 1, 1, 1));
@@ -1029,10 +1060,16 @@ void Scene::render()
 
 	if (victoria)
 	{
-		gameO[0].render("Stage Complete!!!", glm::vec2(SCREEN_WIDTH / 2 + 120, SCREEN_HEIGHT / 2), 64, glm::vec4(0, 0, 0, 1));
+		gameO[0].render("Stage Complete!!!", glm::vec2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
 		
-		if(auxLvl == 1 || auxLvl == 2)
-			gameO[1].render("Press " + to_string(auxLvl+1) + " To Continue", glm::vec2(SCREEN_WIDTH / 2 + 70, SCREEN_HEIGHT / 2 + 100), 64, glm::vec4(0, 0, 0, 1));
+		if (auxLvl == 1)
+		{
+			gameO[1].render("Press " + to_string(auxLvl + 1) + " To Continue", glm::vec2(SCREEN_WIDTH / 2 + 70, SCREEN_HEIGHT / 2 + 180), 64, glm::vec4(0, 0, 0, 1));
+		}
+		else if (auxLvl == 2)
+		{
+			gameO[1].render("Press " + to_string(auxLvl + 1) + " To Continue", glm::vec2(SCREEN_WIDTH / 2 + 50, SCREEN_HEIGHT / 2 + 180), 64, glm::vec4(0, 0, 0, 1));
+		}
 		else 
 			gameO[1].render("Congrats!!! Press Esc to restart", glm::vec2(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 200), 64, glm::vec4(0, 0, 0, 1));
 	}

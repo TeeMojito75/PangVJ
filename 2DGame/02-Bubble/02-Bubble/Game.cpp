@@ -63,7 +63,7 @@ void Game::keyPressed(int key)
 				scene->~Scene();
 				escena = false;
 			}
-			engine->drop();
+			//engine->drop();
 			Game::init();
 		}
 	}

@@ -57,7 +57,6 @@ private:
 	Text gameO[2];
 
 	int puntuacio;
-	int puntsGuardats;
 	int vides;
 	float temps; 
 	float tempsAuxSlow;
@@ -75,6 +74,8 @@ private:
 	int slowmo;
 	bool stop;
 	bool invencible;
+
+	bool godmode;
 	
 	bool petarB1;
 	bool petarB2;
