@@ -55,6 +55,7 @@ private:
 	int auxLvl;
 	Text text[3];
 	Text gameO[2];
+	Text godM;
 
 	int puntuacio;
 	int vides;

@@ -210,6 +210,9 @@ void Scene::init(const int& numLevel, int videsRest)
 	bubbleBig[1]->changeDir();
 	bubbleBig[1]->setTileMap(map);
 
+	//Text per saber si godMode actiu
+	godM.init("fonts/DroidSerif.ttf");
+
 	for (int i = 0; i < 3; i++) {
 		if (!text[i].init("fonts/DroidSerif.ttf")) 
 			cout << "Could not load font!!!" << endl;
@@ -318,6 +321,21 @@ void Scene::update(int deltaTime)
 	}
 	
 	if (!restart) temps -= 0.012f;
+
+	if (temps == 70)
+	{
+		food[0] = new Food();
+		food[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 1);
+		food[0]->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
+		food[0]->setTileMap(map);
+	}
+	if (temps == 40)
+	{
+		food[0] = new Food();
+		food[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 2);
+		food[0]->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
+		food[0]->setTileMap(map);
+	}
 
 	posPaux = player->getPosP();
 
@@ -1047,6 +1065,11 @@ void Scene::render()
 			gameO[0].render("Stage 3", glm::vec2(570, 780), 48, glm::vec4(1, 1, 1, 1));
 			gameO[1].render("Easter Island", glm::vec2(510, 840), 48, glm::vec4(1, 1, 1, 1));
 		}
+	}
+
+	if (godmode)
+	{
+		godM.render("G!!", glm::vec2(850, 840), 48, glm::vec4(1, 1, 1, 1));
 	}
 
 	if (restart)
