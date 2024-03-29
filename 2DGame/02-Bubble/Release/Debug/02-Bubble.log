@@ -1,2 +1,165 @@
-﻿  Scene.cpp
+﻿  Bubble.cpp
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Bubble.cpp(63,24): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Bubble.cpp(107,24): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+  Controls.cpp
+  Food.cpp
+  Game.cpp
+  Hook.cpp
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Hook.cpp(36,19): warning C4305: '+=': truncamiento de 'double' a 'float'
+  Levels.cpp
+  Menu.cpp
+  Player.cpp
+  Power.cpp
+  Scene.cpp
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(78,3): warning C4156: eliminación de expresión de matriz sin utilizar el formato de matriz de 'delete'; formato de matriz sustituido
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(78,3): warning C4154: eliminación de una expresión de matriz; suministrada una conversión a puntero
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(80,3): warning C4156: eliminación de expresión de matriz sin utilizar el formato de matriz de 'delete'; formato de matriz sustituido
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(80,3): warning C4154: eliminación de una expresión de matriz; suministrada una conversión a puntero
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(82,3): warning C4156: eliminación de expresión de matriz sin utilizar el formato de matriz de 'delete'; formato de matriz sustituido
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(82,3): warning C4154: eliminación de una expresión de matriz; suministrada una conversión a puntero
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(84,3): warning C4156: eliminación de expresión de matriz sin utilizar el formato de matriz de 'delete'; formato de matriz sustituido
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(84,3): warning C4154: eliminación de una expresión de matriz; suministrada una conversión a puntero
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(86,3): warning C4156: eliminación de expresión de matriz sin utilizar el formato de matriz de 'delete'; formato de matriz sustituido
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(86,3): warning C4154: eliminación de una expresión de matriz; suministrada una conversión a puntero
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,115): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,115): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,115): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,115): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,115): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,94): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,94): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,94): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,94): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,94): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(631,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,116): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,116): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,116): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,116): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,116): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,95): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,95): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,95): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,95): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,95): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,70): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(641,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(675,29): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(680,35): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(685,29): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(703,137): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(703,137): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(703,137): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(703,137): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(703,137): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(703,106): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(703,74): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(726,137): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(726,137): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(726,137): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(726,137): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(726,137): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(726,106): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(726,74): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(743,145): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(743,145): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(743,145): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(743,145): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(743,145): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(743,116): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(743,85): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(761,145): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(761,145): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(761,145): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(761,145): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(761,145): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(761,116): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(761,85): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(784,145): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(784,145): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(784,145): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(784,145): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(784,145): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(784,116): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(784,85): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(802,145): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(802,145): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(802,145): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(802,145): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(802,145): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(802,116): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(802,85): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(825,147): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(825,147): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(825,147): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(825,147): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(825,147): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(825,118): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(825,86): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(834,147): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(834,147): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(834,147): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(834,147): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(834,147): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(834,118): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(834,86): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(843,147): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(843,147): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(843,147): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(843,147): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(843,147): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(843,118): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(843,86): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(852,147): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(852,147): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(852,147): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(852,147): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(852,147): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(852,118): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(852,86): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(861,147): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(861,147): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(861,147): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(861,147): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(861,147): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(861,118): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(861,86): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(870,147): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(870,147): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(870,147): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(870,147): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(870,147): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(870,118): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(870,86): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(879,147): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(879,147): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(879,147): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(879,147): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(879,147): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(879,118): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(879,86): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(888,147): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(888,147): warning C4244:         with
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(888,147): warning C4244:         [
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(888,147): warning C4244:             T=int
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(888,147): warning C4244:         ]
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(888,118): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\02-Bubble\Scene.cpp(888,86): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Shader.cpp
+  ShaderProgram.cpp
+  SoundManager.cpp
+  Sprite.cpp
+  Text.cpp
+  Texture.cpp
+  TexturedQuad.cpp
+  TileMap.cpp
+  main.cpp
+  Generando código...
+  LINK : no se encontró C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\Debug\02-Bubble.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+SOIL.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB '' con 'SOIL.lib(image_DXT.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+SOIL.lib(image_helper.obj) : warning LNK4099: no se encontró PDB '' con 'SOIL.lib(image_helper.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+SOIL.lib(SOIL.obj) : warning LNK4099: no se encontró PDB '' con 'SOIL.lib(SOIL.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: no se encontró PDB '' con 'SOIL.lib(stb_image_aug.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
   02-Bubble.vcxproj -> C:\Users\iesmj\OneDrive\Escritorio\Pang_VJ\PangVJ\2DGame\02-Bubble\Debug\02-Bubble.exe

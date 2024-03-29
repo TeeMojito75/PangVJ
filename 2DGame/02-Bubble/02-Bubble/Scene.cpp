@@ -611,6 +611,7 @@ void Scene::update(int deltaTime)
 			spawn1 = true;
 			spawn2 = true;
 			temps = 91.f;
+			puntuacio = 0;
 			vides -= 1;
 			Scene::init(auxLvl, vides);
 		}
