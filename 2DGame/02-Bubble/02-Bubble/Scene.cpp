@@ -43,6 +43,8 @@ Scene::Scene()
 	music = true;
 	victoria = false;
 	auxLvl = 1;
+	spawn1 = true;
+	spawn2 = true;
 
 	invencible = false;
 	slow = false;
@@ -318,21 +320,23 @@ void Scene::update(int deltaTime)
 
 	}
 	
-	if (!restart) temps -= 0.012f;
+	if (!restart) temps -= 0.015f;
 
-	if (temps == 70)
+	if (spawn1 && int(temps) == 70)
 	{
 		food[0] = new Food();
 		food[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 1);
 		food[0]->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
 		food[0]->setTileMap(map);
+		spawn1 = false;
 	}
-	if (temps == 40)
+	if (spawn2 && int(temps) == 40.0f)
 	{
 		food[0] = new Food();
 		food[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 2);
 		food[0]->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
 		food[0]->setTileMap(map);
+		spawn2 = false;
 	}
 
 	posPaux = player->getPosP();
@@ -582,6 +586,8 @@ void Scene::update(int deltaTime)
 		invencible = false;
 		stop = false;
 		write = true;
+		spawn1 = true;
+		spawn2 = true;
 		Scene::init(auxLvl, vides);
 	}
 
@@ -602,6 +608,8 @@ void Scene::update(int deltaTime)
 			slow = false;
 			invencible = false;
 			stop = false;
+			spawn1 = true;
+			spawn2 = true;
 			temps = 91.f;
 			vides -= 1;
 			Scene::init(auxLvl, vides);
@@ -622,6 +630,8 @@ void Scene::update(int deltaTime)
 		slow = false;
 		invencible = false;
 		stop = false;
+		spawn1 = true;
+		spawn2 = true;
 		puntuacio = 0;
 		Scene::init(auxLvl, vides);
 	}
@@ -692,8 +702,6 @@ void Scene::update(int deltaTime)
 		hook[0]->setPosition(glm::vec2(player->getPosP().x + 16 / 8 * map->getTileSize(), player->getPosP().y - 187 + 32 / 8 * map->getTileSize()));
 		hook[0]->setTileMap(map);
 	}
-
-
 
 	if (hook[0] != NULL && map->collisionRoof(glm::vec2(hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength()), glm::ivec2(9, hook[0]->getHighLength()))) {
 		delete hook[0];
@@ -1066,9 +1074,9 @@ void Scene::render()
 		}
 	}
 
-	if (godmode)
+	if (godmode || invencible || slow || stop)
 	{
-		godM.render("G!!", glm::vec2(850, 840), 48, glm::vec4(1, 1, 1, 1));
+		godM.render("PowerUp!!", glm::vec2(850, 840), 48, glm::vec4(1, 1, 1, 1));
 	}
 
 	if (restart)

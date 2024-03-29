@@ -70,6 +70,8 @@ private:
 	bool victoria;
 	bool write;
 	bool music;
+	bool spawn1;
+	bool spawn2;
 
 	bool slow;
 	int slowmo;
