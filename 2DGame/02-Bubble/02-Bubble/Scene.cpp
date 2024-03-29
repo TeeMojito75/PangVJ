@@ -17,9 +17,14 @@ Scene::Scene()
 {
 	map = NULL;
 	player = NULL;
-	hook = NULL;
-	power = NULL;
-	food = NULL;
+	hook[0] = NULL;
+	hook[1] = NULL;
+	power[0] = NULL;
+	power[1] = NULL;
+	power[2] = NULL;
+	food[0] = NULL;
+	food[1] = NULL;
+	food[2] = NULL;
 	bubbleBig[0] = NULL;
 	bubbleBig[1] = NULL;
 	background = NULL;
@@ -28,6 +33,9 @@ Scene::Scene()
 	puntuacio = 0;
 	vides = 3;
 	temps = 91.f;
+	tempsAuxInvencible = 0.f;
+	tempsAuxStop = 0.f;
+	tempsAuxSlow = 0.f;
 	hit = false;
 	restart = false;
 	over = false;
@@ -36,7 +44,10 @@ Scene::Scene()
 	victoria = false;
 	auxLvl = 1;
 
-	invencible = true;
+	invencible = false;
+	slow = false;
+	stop = false;
+
 	petarB1 = false;
 	petarB2 = false;
 	petarM1 = false;
@@ -61,8 +72,22 @@ Scene::~Scene()
 		delete map;
 	if(player != NULL)
 		delete player;
-	if (hook != NULL)
+	if (hook[0] != NULL)
 		delete hook;
+	if (hook[1] != NULL)
+		delete hook;
+	if (power[0] != NULL)
+		delete power;
+	if (power[1] != NULL)
+		delete power;
+	if (power[2] != NULL)
+		delete power;
+	if (food[0] != NULL)
+		delete food;
+	if (food[0] != NULL)
+		delete food;
+	if (food[0] != NULL)
+		delete food;
 	if (background != NULL)
 		delete background;
 	if (engine != NULL)
@@ -126,10 +151,10 @@ void Scene::init(const int& numLevel, int videsRest)
 	player->setTileMap(map);
 	hit = false;
 
-	food = new Food();
-	food->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 0);
-	food->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
-	food->setTileMap(map);
+	food[0] = new Food();
+	food[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 0);
+	food[0]->setPosition(glm::vec2(INIT_PLAYER_X_TILES * map->getTileSize(), 5 * map->getTileSize()));
+	food[0]->setTileMap(map);
 
 	//Reset bolles petites si s'ha mort
 	if (petarB1) {
@@ -220,63 +245,72 @@ void Scene::update(int deltaTime)
 {
 	currentTime += deltaTime;
 	player->update(deltaTime);
-	if (food != NULL)food->update(deltaTime);
-	if (power != NULL) power->update(deltaTime);
-	if(hook != NULL) hook->update(deltaTime);
+	if (food[0] != NULL)food[0]->update(deltaTime);
+	if (food[1] != NULL)food[1]->update(deltaTime);
+	if (food[2] != NULL)food[2]->update(deltaTime);
+	if (power[0] != NULL) power[0]->update(deltaTime);
+	if (power[1] != NULL) power[1]->update(deltaTime);
+	if (power[2] != NULL) power[2]->update(deltaTime);
+	if(hook[0] != NULL) hook[0]->update(deltaTime);
+	if (hook[1] != NULL) hook[1]->update(deltaTime);
 
-	for (int i = 0; i < 2; i++)
-	{
-		if (!bubbleBig[i]->getElimina())
-			bubbleBig[i]->update(deltaTime);
-	}
-	if (petarB1)
-	{
+	if (!stop) {
+
 		for (int i = 0; i < 2; i++)
 		{
-			if (!bubbleMid[i]->getElimina())
-				bubbleMid[i]->update(deltaTime);
+			if (!bubbleBig[i]->getElimina())
+				bubbleBig[i]->update(deltaTime, slow);
 		}
-	}
-	if (petarB2)
-	{
-		for (int i = 2; i < 4; i++)
+		if (petarB1)
 		{
-			if(!bubbleMid[i]->getElimina())
-				bubbleMid[i]->update(deltaTime);
+			for (int i = 0; i < 2; i++)
+			{
+				if (!bubbleMid[i]->getElimina())
+					bubbleMid[i]->update(deltaTime, slow);
+			}
 		}
-	}
+		if (petarB2)
+		{
+			for (int i = 2; i < 4; i++)
+			{
+				if (!bubbleMid[i]->getElimina())
+					bubbleMid[i]->update(deltaTime, slow);
+			}
+		}
 
-	if (petarM1)
-	{
-		for (int i = 0; i < 2; i++)
+		if (petarM1)
 		{
-			if (!bubbleSmll[i]->getElimina())
-				bubbleSmll[i]->update(deltaTime);
+			for (int i = 0; i < 2; i++)
+			{
+				if (!bubbleSmll[i]->getElimina())
+					bubbleSmll[i]->update(deltaTime, slow);
+			}
 		}
-	}
-	if (petarM2)
-	{
-		for (int i = 2; i < 4; i++)
+		if (petarM2)
 		{
-			if (!bubbleSmll[i]->getElimina())
-				bubbleSmll[i]->update(deltaTime);
+			for (int i = 2; i < 4; i++)
+			{
+				if (!bubbleSmll[i]->getElimina())
+					bubbleSmll[i]->update(deltaTime, slow);
+			}
 		}
-	}
-	if (petarM3)
-	{
-		for (int i = 4; i < 6; i++)
+		if (petarM3)
 		{
-			if (!bubbleSmll[i]->getElimina())
-				bubbleSmll[i]->update(deltaTime);
+			for (int i = 4; i < 6; i++)
+			{
+				if (!bubbleSmll[i]->getElimina())
+					bubbleSmll[i]->update(deltaTime, slow);
+			}
 		}
-	}
-	if (petarM4)
-	{
-		for (int i = 6; i < 8; i++)
+		if (petarM4)
 		{
-			if (!bubbleSmll[i]->getElimina())
-				bubbleSmll[i]->update(deltaTime);
+			for (int i = 6; i < 8; i++)
+			{
+				if (!bubbleSmll[i]->getElimina())
+					bubbleSmll[i]->update(deltaTime, slow);
+			}
 		}
+
 	}
 	
 	if (!restart) temps -= 0.012f;
@@ -516,9 +550,14 @@ void Scene::update(int deltaTime)
 	{
 		over = true;
 		restart = false;
-		hook = NULL;
-		food = NULL;
-		power = NULL;
+		hook[0] = NULL;
+		hook[1] = NULL;
+		power[0] = NULL;
+		power[1] = NULL;
+		power[2] = NULL;
+		food[0] = NULL;
+		food[1] = NULL;
+		food[2] = NULL;
 		write = true;
 		Scene::init(auxLvl, vides);
 	}
@@ -529,9 +568,14 @@ void Scene::update(int deltaTime)
 		{
 			write = true;
 			restart = true;
-			hook = NULL;
-			food = NULL;
-			power = NULL;
+			hook[0] = NULL;
+			hook[1] = NULL;
+			power[0] = NULL;
+			power[1] = NULL;
+			power[2] = NULL;
+			food[0] = NULL;
+			food[1] = NULL;
+			food[2] = NULL;
 			temps = 91.f;
 			vides -= 1;
 			Scene::init(auxLvl, vides);
@@ -541,35 +585,88 @@ void Scene::update(int deltaTime)
 	if (restart)
 	{
 		write = true;
-		hook = NULL;
-		food = NULL;
-		power = NULL;
+		hook[0] = NULL;
+		hook[1] = NULL;
+		power[0] = NULL;
+		power[1] = NULL;
+		power[2] = NULL;
+		food[0] = NULL;
+		food[1] = NULL;
+		food[2] = NULL;
 		puntuacio = 0;
 		Scene::init(auxLvl, vides);
 	}
 
-	
-	if (Game::instance().getKey(GLFW_KEY_S) && hook == NULL) {
-		hook = new Hook();
-		hook->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
-		hook->setPosition(glm::vec2(player->getPosP().x + 16 / 8 * map->getTileSize(), player->getPosP().y - 187 + 32 / 8 * map->getTileSize()));
-		hook->setTileMap(map);
+	for (int i = 0; i < 3; ++i) {
+		if (food[i] != NULL) {
+			if (circleRect(food[i]->getPosF().x + 16, food[i]->getPosF().y + 16, 16, player->getPosP().x, player->getPosP().y, 32, 32)) {
+				puntuacio += food[i]->getPoints();
+				delete food[i];
+				food[i] = NULL;
+			}
+		}
 	}
 
-	if (hook != NULL && map->collisionRoof(glm::vec2(hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength()), glm::ivec2(9, hook->getHighLength()))) {
-		delete hook;
-		hook = NULL;
+	for (int i = 0; i < 3; ++i) {
+		if (power[i] != NULL) {
+			if (circleRect(power[i]->getPosPo().x + 8, power[i]->getPosPo().y + 8, 8, player->getPosP().x, player->getPosP().y, 32, 32)) {
+				if (power[i]->getType() == 0) {
+					slow = true;
+					tempsAuxSlow = 5.f;
+				}
+				if (power[i]->getType() == 1) {
+					invencible = true;
+					tempsAuxInvencible = 5.f;
+				}
+				if (power[i]->getType() == 2) {
+					stop = true;
+					tempsAuxStop = 5.f;
+				}
+				delete power[i];
+				power[i] = NULL;
+			}
+		}
+	}
+
+	if (slow) {
+		if (tempsAuxSlow <= 0) slow = false;
+		else tempsAuxSlow -= 0.012;
+	}
+
+	if (invencible) {
+		if (tempsAuxInvencible <= 0) invencible = false;
+		else tempsAuxInvencible -= 0.012;
+	}
+
+	if (stop) {
+		if (tempsAuxStop <= 0) stop = false;
+		else tempsAuxStop -= 0.012;
+	}
+
+	
+	if (Game::instance().getKey(GLFW_KEY_S) && hook[0] == NULL) {
+		hook[0] = new Hook();
+		hook[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram);
+		hook[0]->setPosition(glm::vec2(player->getPosP().x + 16 / 8 * map->getTileSize(), player->getPosP().y - 187 + 32 / 8 * map->getTileSize()));
+		hook[0]->setTileMap(map);
+	}
+
+
+
+	if (hook[0] != NULL && map->collisionRoof(glm::vec2(hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength()), glm::ivec2(9, hook[0]->getHighLength()))) {
+		delete hook[0];
+		hook[0] = NULL;
 	}
 	
-	if (!petarB1 && hook != NULL && circleRect(bubbleBig[0]->getPosB().x + 16, bubbleBig[0]->getPosB().y + 16, 16, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength())) {
-		delete hook;
-		hook = NULL;
+	if (!petarB1 && hook[0] != NULL && circleRect(bubbleBig[0]->getPosB().x + 16, bubbleBig[0]->getPosB().y + 16, 16, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength())) {
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 200;
 
-		power = new Power();
-		power->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 0);
-		power->setPosition(bubbleBig[0]->getPosB());
-		power->setTileMap(map);
+		power[0] = new Power();
+		power[0]->init(glm::ivec2(SCREEN_X, SCREEN_Y), texProgram, 0);
+		power[0]->setPosition(bubbleBig[0]->getPosB());
+		power[0]->setTileMap(map);
 
 		petarB1 = true;
 		bubbleMid[0] = new Bubble();
@@ -586,9 +683,9 @@ void Scene::update(int deltaTime)
 		bubbleBig[0]->tocada();
 	}
 
-	if (!petarB2 && hook != NULL && circleRect(bubbleBig[1]->getPosB().x + 16, bubbleBig[1]->getPosB().y + 16, 16, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength())) {
-		delete hook;
-		hook = NULL;
+	if (!petarB2 && hook[0] != NULL && circleRect(bubbleBig[1]->getPosB().x + 16, bubbleBig[1]->getPosB().y + 16, 16, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength())) {
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 200;
 		petarB2 = true;
 		bubbleMid[2] = new Bubble();
@@ -605,10 +702,10 @@ void Scene::update(int deltaTime)
 		bubbleBig[1]->tocada();
 	}
 
-	if (!petarM1 && petarB1 && hook != NULL && circleRect(bubbleMid[0]->getPosB().x + 8, bubbleMid[0]->getPosB().y + 8, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarM1 && petarB1 && hook[0] != NULL && circleRect(bubbleMid[0]->getPosB().x + 8, bubbleMid[0]->getPosB().y + 8, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 400;
 		petarM1 = true;
 		bubbleSmll[0] = new Bubble();
@@ -625,10 +722,10 @@ void Scene::update(int deltaTime)
 		bubbleMid[0]->tocada();
 	}
 
-	if (!petarM2 && petarB1 && hook != NULL && circleRect(bubbleMid[1]->getPosB().x + 8, bubbleMid[1]->getPosB().y + 8, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarM2 && petarB1 && hook[0] != NULL && circleRect(bubbleMid[1]->getPosB().x + 8, bubbleMid[1]->getPosB().y + 8, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 400;
 		petarM2 = true;
 		bubbleSmll[2] = new Bubble();
@@ -645,10 +742,10 @@ void Scene::update(int deltaTime)
 		bubbleMid[1]->tocada();
 	}
 
-	if (!petarM3 && petarB2 && hook != NULL && circleRect(bubbleMid[2]->getPosB().x + 8, bubbleMid[2]->getPosB().y + 8, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarM3 && petarB2 && hook[0] != NULL && circleRect(bubbleMid[2]->getPosB().x + 8, bubbleMid[2]->getPosB().y + 8, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 400;
 		petarM3 = true;
 		bubbleSmll[4] = new Bubble();
@@ -665,10 +762,10 @@ void Scene::update(int deltaTime)
 		bubbleMid[2]->tocada();
 	}
 
-	if (!petarM4 && petarB2 && hook != NULL && circleRect(bubbleMid[3]->getPosB().x + 8, bubbleMid[3]->getPosB().y + 8, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarM4 && petarB2 && hook[0] != NULL && circleRect(bubbleMid[3]->getPosB().x + 8, bubbleMid[3]->getPosB().y + 8, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 400;
 		petarM4 = true;
 		bubbleSmll[6] = new Bubble();
@@ -685,73 +782,73 @@ void Scene::update(int deltaTime)
 		bubbleMid[3]->tocada();
 	}
 
-	if (!petarS1 && petarM1 && hook != NULL && circleRect(bubbleSmll[0]->getPosB().x + 4, bubbleSmll[0]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarS1 && petarM1 && hook[0] != NULL && circleRect(bubbleSmll[0]->getPosB().x + 4, bubbleSmll[0]->getPosB().y + 4, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 800;
 		petarS1 = true;
 		bubbleSmll[0]->tocada();
 	}
 
-	if (!petarS2 && petarM1 && hook != NULL && circleRect(bubbleSmll[1]->getPosB().x + 4, bubbleSmll[1]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarS2 && petarM1 && hook[0] != NULL && circleRect(bubbleSmll[1]->getPosB().x + 4, bubbleSmll[1]->getPosB().y + 4, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 800;
 		petarS2 = true;
 		bubbleSmll[1]->tocada();
 	}
 
-	if (!petarS3 && petarM2 && hook != NULL && circleRect(bubbleSmll[2]->getPosB().x + 4, bubbleSmll[2]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarS3 && petarM2 && hook[0] != NULL && circleRect(bubbleSmll[2]->getPosB().x + 4, bubbleSmll[2]->getPosB().y + 4, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 800;
 		petarS3 = true;
 		bubbleSmll[2]->tocada();
 	}
 
-	if (!petarS4 && petarM2 && hook != NULL && circleRect(bubbleSmll[3]->getPosB().x + 4, bubbleSmll[3]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarS4 && petarM2 && hook[0] != NULL && circleRect(bubbleSmll[3]->getPosB().x + 4, bubbleSmll[3]->getPosB().y + 4, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 800;
 		petarS4 = true;
 		bubbleSmll[3]->tocada();
 	}
 
-	if (!petarS5 && petarM3 && hook != NULL && circleRect(bubbleSmll[4]->getPosB().x + 4, bubbleSmll[4]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarS5 && petarM3 && hook[0] != NULL && circleRect(bubbleSmll[4]->getPosB().x + 4, bubbleSmll[4]->getPosB().y + 4, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 800;
 		petarS5 = true;
 		bubbleSmll[4]->tocada();
 	}
 
-	if (!petarS6 && petarM3 && hook != NULL && circleRect(bubbleSmll[5]->getPosB().x + 4, bubbleSmll[5]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarS6 && petarM3 && hook[0] != NULL && circleRect(bubbleSmll[5]->getPosB().x + 4, bubbleSmll[5]->getPosB().y + 4, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 800;
 		petarS6 = true;
 		bubbleSmll[5]->tocada();
 	}
 
-	if (!petarS7 && petarM4 && hook != NULL && circleRect(bubbleSmll[6]->getPosB().x + 4, bubbleSmll[6]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarS7 && petarM4 && hook[0] != NULL && circleRect(bubbleSmll[6]->getPosB().x + 4, bubbleSmll[6]->getPosB().y + 4, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 800;
 		petarS7 = true;
 		bubbleSmll[6]->tocada();
 	}
 
-	if (!petarS8 && petarM4 && hook != NULL && circleRect(bubbleSmll[7]->getPosB().x + 4, bubbleSmll[7]->getPosB().y + 4, 8, hook->getPosHook().x, hook->getPosHook().y + 187 - hook->getHighLength(), 9, hook->getHighLength()))
+	if (!petarS8 && petarM4 && hook[0] != NULL && circleRect(bubbleSmll[7]->getPosB().x + 4, bubbleSmll[7]->getPosB().y + 4, 8, hook[0]->getPosHook().x, hook[0]->getPosHook().y + 187 - hook[0]->getHighLength(), 9, hook[0]->getHighLength()))
 	{
-		delete hook;
-		hook = NULL;
+		delete hook[0];
+		hook[0] = NULL;
 		puntuacio += 800;
 		petarS8 = true;
 		bubbleSmll[7]->tocada();
@@ -765,9 +862,14 @@ void Scene::update(int deltaTime)
 		puntsGuardats = puntuacio;
 		puntuacio = 0;
 		over = false;
-		hook = NULL;
-		food = NULL;
-		power = NULL;
+		hook[0] = NULL;
+		hook[1] = NULL;
+		power[0] = NULL;
+		power[1] = NULL;
+		power[2] = NULL;
+		food[0] = NULL;
+		food[1] = NULL;
+		food[2] = NULL;
 		write = true;
 		engine->drop();
 		SoundManager::instance().init();
@@ -815,9 +917,14 @@ void Scene::render()
 	background->render();
 	map->render();
 	player->render();
-	if (food != NULL && !restart && !over && !victoria) food->render();
-	if (power != NULL && !restart && !over && !victoria) power->render();
-	if (hook != NULL && !restart && !over && !victoria) hook->render();
+	if (food[0] != NULL && !restart && !over && !victoria) food[0]->render();
+	if (food[1] != NULL && !restart && !over && !victoria) food[1]->render();
+	if (food[2] != NULL && !restart && !over && !victoria) food[2]->render();
+	if (power[0] != NULL && !restart && !over && !victoria) power[0]->render();
+	if (power[1] != NULL && !restart && !over && !victoria) power[1]->render();
+	if (power[2] != NULL && !restart && !over && !victoria) power[2]->render();
+	if (hook[0] != NULL && !restart && !over && !victoria) hook[0]->render();
+	if (hook[1] != NULL && !restart && !over && !victoria) hook[1]->render();
 	
 	
 	for (int i = 0; i < 2; i++)

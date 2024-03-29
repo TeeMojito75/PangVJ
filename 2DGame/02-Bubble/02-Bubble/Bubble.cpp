@@ -25,20 +25,20 @@ void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram,  g
 
 }
 
-void Bubble::update(int deltaTime)
+void Bubble::update(int deltaTime, bool slow)
 {
 	sprite->update(deltaTime);
-	
+	if (!slow) {
 		if (dir == false)
-		posBubble.x -= 2;
+			posBubble.x -= 2;
 		if (map->collisionMoveLeft(posBubble, size))
 		{
 			posBubble.x += 2;
 			dir = !dir;
 		}
-	
+
 		if (dir == true)
-		posBubble.x += 2;
+			posBubble.x += 2;
 		if (map->collisionMoveRight(posBubble, size))
 		{
 			posBubble.x -= 2;
@@ -58,7 +58,7 @@ void Bubble::update(int deltaTime)
 				posBubble.y = int(startY - 86 * sin(3.14159f * jumpAngle / 180.f));
 				if (jumpAngle > 90);
 				bJumping = (!map->collisionMoveDown(posBubble, size, &posBubble.y)
-						&& !map->collisionRoof(posBubble, size));
+					&& !map->collisionRoof(posBubble, size));
 			}
 		}
 		else
@@ -66,11 +66,56 @@ void Bubble::update(int deltaTime)
 			posBubble.y += FALL_STEP;
 			if (map->collisionMoveDown(posBubble, size, &posBubble.y))
 			{
-					bJumping = true;
-					jumpAngle = 0;
-					startY = posBubble.y;
+				bJumping = true;
+				jumpAngle = 0;
+				startY = posBubble.y;
 			}
 		}
+	}
+	if (slow) {
+		if (dir == false)
+			posBubble.x -= 1;
+		if (map->collisionMoveLeft(posBubble, size))
+		{
+			posBubble.x += 1;
+			dir = !dir;
+		}
+
+		if (dir == true)
+			posBubble.x += 1;
+		if (map->collisionMoveRight(posBubble, size))
+		{
+			posBubble.x -= 1;
+			dir = !dir;
+		}
+
+		if (bJumping)
+		{
+			jumpAngle += JUMP_ANGLE_STEP/2;
+			if (jumpAngle == 180)
+			{
+				bJumping = false;
+				posBubble.y = startY;
+			}
+			else
+			{
+				posBubble.y = int(startY - 86 * sin(3.14159f * jumpAngle / 180.f));
+				if (jumpAngle > 90);
+				bJumping = (!map->collisionMoveDown(posBubble, size, &posBubble.y)
+					&& !map->collisionRoof(posBubble, size));
+			}
+		}
+		else
+		{
+			posBubble.y += FALL_STEP/2;
+			if (map->collisionMoveDown(posBubble, size, &posBubble.y))
+			{
+				bJumping = true;
+				jumpAngle = 0;
+				startY = posBubble.y;
+			}
+		}
+	}
 	
 
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posBubble.x), float(tileMapDispl.y + posBubble.y)));

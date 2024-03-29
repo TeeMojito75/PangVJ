@@ -19,12 +19,14 @@ public:
 	void setPosition(const glm::vec2& pos);
 
 	glm::ivec2 getPosF();
+	int getPoints();
 
 private:
 	glm::ivec2 tileMapDispl, posFood;
 	Texture spritesheet;
 	Sprite* sprite;
 	TileMap* map;
+	int points;
 
 };
 

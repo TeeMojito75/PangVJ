@@ -12,7 +12,7 @@ public:
 
 	void init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, glm::ivec2 sizeB);
 
-	void update(int deltaTime);
+	void update(int deltaTime, bool slow);
 	void render();
 
 	void setTileMap(TileMap* tileMap);

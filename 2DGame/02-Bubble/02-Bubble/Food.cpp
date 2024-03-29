@@ -28,6 +28,7 @@ void Food::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram, int 
 	sprite->changeAnimation(type);
 	tileMapDispl = tileMapPos;
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posFood.x), float(tileMapDispl.y + posFood.y)));
+	points = 200 * (type+1);
 
 }
 
@@ -35,10 +36,9 @@ void Food::update(int deltaTime)
 {
 
 	sprite->update(deltaTime);
-	posFood.y += 1;
-	if (map->collisionMoveDown(posFood, glm::ivec2(32, 24), &posFood.y))
+	if (!map->collisionMoveDown(posFood, glm::ivec2(32, 24), &posFood.y))
 	{
-		posFood.y -= 1;
+		posFood.y += 1;
 	}
 	sprite->setPosition(glm::vec2(float(tileMapDispl.x + posFood.x), float(tileMapDispl.y + posFood.y)));
 }
@@ -62,4 +62,9 @@ void Food::setPosition(const glm::vec2& pos)
 glm::ivec2 Food::getPosF()
 {
 	return posFood;
+}
+
+int Food::getPoints()
+{
+	return points;
 }

@@ -39,9 +39,9 @@ private:
 	ISoundEngine* engine;
 	TileMap *map;
 	Player *player;
-	Hook* hook;
-	Power* power;
-	Food* food;
+	Hook* hook[2];
+	Power* power[3];
+	Food* food[3];
 
 	Bubble* bubbleBig[2];
 	Bubble* bubbleMid[4];
@@ -60,6 +60,9 @@ private:
 	int puntsGuardats;
 	int vides;
 	float temps; 
+	float tempsAuxSlow;
+	float tempsAuxStop;
+	float tempsAuxInvencible;
 
 	bool hit;
 	bool restart;
@@ -68,6 +71,9 @@ private:
 	bool write;
 	bool music;
 
+	bool slow;
+	int slowmo;
+	bool stop;
 	bool invencible;
 	
 	bool petarB1;
