@@ -639,15 +639,15 @@ void Scene::update(int deltaTime)
 	for (int i = 0; i < 3; ++i) {
 		if (power[i] != NULL) {
 			if (circleRect(power[i]->getPosPo().x + 8, power[i]->getPosPo().y + 8, 8, player->getPosP().x, player->getPosP().y, 32, 32)) {
-				if (power[i]->getType() == 0) {
+				if (power[i]->getType() == 0 || Game::instance().getKey(GLFW_KEY_T)) {
 					slow = true;
 					tempsAuxSlow = 5.f;
 				}
-				if (power[i]->getType() == 1) {
+				if (power[i]->getType() == 1 || Game::instance().getKey(GLFW_KEY_Y)) {
 					invencible = true;
 					tempsAuxInvencible = 5.f;
 				}
-				if (power[i]->getType() == 2) {
+				if (power[i]->getType() == 2 || Game::instance().getKey(GLFW_KEY_U)) {
 					stop = true;
 					tempsAuxStop = 5.f;
 				}
@@ -655,6 +655,19 @@ void Scene::update(int deltaTime)
 				power[i] = NULL;
 			}
 		}
+	}
+
+	if (Game::instance().getKey(GLFW_KEY_T)) {
+		slow = true;
+		tempsAuxSlow = 5.f;
+	}
+	if (Game::instance().getKey(GLFW_KEY_Y)) {
+		invencible = true;
+		tempsAuxInvencible = 5.f;
+	}
+	if (Game::instance().getKey(GLFW_KEY_U)) {
+		stop = true;
+		tempsAuxStop = 5.f;
 	}
 
 	if (slow) {

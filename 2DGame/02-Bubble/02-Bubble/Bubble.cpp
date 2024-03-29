@@ -25,7 +25,6 @@ void Bubble::init(const glm::ivec2& tileMapPos, ShaderProgram& shaderProgram,  g
 	
 	bJumping = true;
 	jumpAngle = 45;
-	cout << posIni.y << endl;
 	startY = posIni.y + int(86 * sin(3.14159f * jumpAngle / 180.f));
 	
 }
